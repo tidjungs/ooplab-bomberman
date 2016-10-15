@@ -25,9 +25,9 @@ public class WorldRenderer {
 	
 	public void render (float delta) {
         mazeRenderer.render();
-        batch.begin();
         Vector2 pos = bomberman.getPosition();
-        batch.draw(bombermanImg, pos.x, pos.y);
+        batch.begin();
+        batch.draw(bombermanImg, pos.x - 20, BombermanGame.HEIGHT - pos.y - 20);
         batch.end();
 	}
 }

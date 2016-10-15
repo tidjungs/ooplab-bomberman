@@ -7,7 +7,7 @@ public class World {
     
     World(BombermanGame bombermanGame) {
     	this.bombermanGame = bombermanGame;
-    	bomberman = new Bomberman(100, 100);
+    	bomberman = new Bomberman(60, 60);
     	maze = new Maze();
     }
     
