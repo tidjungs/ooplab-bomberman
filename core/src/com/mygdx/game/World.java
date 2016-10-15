@@ -18,4 +18,8 @@ public class World {
     Maze getMaze() {
     	return maze;
     }
+    
+    public void update(float delta) {
+        bomberman.update();
+    }
 }
