@@ -3,7 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.math.Vector2;
 
 public class Bomberman {
-	private Vector2 postition;
+	private Vector2 position;
 	
 	public static final int DIRECTION_UP = 1;
 	public static final int DIRECTION_RIGHT = 2;
@@ -11,28 +11,24 @@ public class Bomberman {
 	public static final int DIRECTION_LEFT = 4;
 	public static final int DIRECTION_STILL = 0;
 	
+	private static final int [][] DIR_OFFSETS = new int [][] {
+		{0, 0},
+		{0, -1},
+		{1, 0},
+		{0, 1},
+		{-1, 0}
+	};
+	
 	public Bomberman(int x, int y) {
-		postition = new Vector2(x, y);
+		position = new Vector2(x, y);
 	}
 	
 	public Vector2 getPosition() {
-		return postition;
+		return position;
 	}
 	
 	public void move(int dir) {
-		switch(dir) {
-			case DIRECTION_UP:
-				postition.y -= 10;
-				break;
-			case DIRECTION_RIGHT:
-				postition.x += 10;
-				break;
-			case DIRECTION_DOWN:
-				postition.y += 10;
-				break;
-			case DIRECTION_LEFT:
-				postition.x -= 10;
-				break;
-		}
+		position.x += 10 * DIR_OFFSETS[dir][0];
+		position.y += 10 * DIR_OFFSETS[dir][1];
 	}
 }
