@@ -21,8 +21,13 @@ public class Bomberman {
 	
 	public static final int SPEED = 10;
 	
+	private int currentDirection;
+	private int nextDirection;
+	
 	public Bomberman(int x, int y) {
 		position = new Vector2(x, y);
+		currentDirection = DIRECTION_STILL;
+        nextDirection = DIRECTION_STILL;
 	}
 	
 	public Vector2 getPosition() {
