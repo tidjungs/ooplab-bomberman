@@ -5,18 +5,17 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 
 public class GameScreen extends ScreenAdapter {
 	private BombermanGame bombermanGame;
 	private Texture bombermanImg;
-	private int x;
-	private int y;
+	private Bomberman bomberman;
 	
 	public GameScreen(BombermanGame bombermanGame) {
 		this.bombermanGame = bombermanGame;
 		bombermanImg = new Texture("bomberman.png");
-		x = 100;
-		y = 100;
+		bomberman = new Bomberman(100, 100);
 	}
 	
 	public void render (float delta) {
@@ -25,7 +24,8 @@ public class GameScreen extends ScreenAdapter {
         update(delta);
         SpriteBatch batch = bombermanGame.batch;
         batch.begin();
-        batch.draw(bombermanImg, x, y);
+        Vector2 pos = bomberman.getPosition();
+        batch.draw(bombermanImg, pos.x, pos.y);
         batch.end();
 	}
 	
