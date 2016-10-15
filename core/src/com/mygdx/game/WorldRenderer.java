@@ -7,6 +7,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 public class WorldRenderer {
+	
+	public static final int BLOCK_SIZE = 40;
+	
 	BombermanGame bombermanGame;
 	Bomberman bomberman;
 	World world;
@@ -27,7 +30,7 @@ public class WorldRenderer {
         mazeRenderer.render();
         Vector2 pos = bomberman.getPosition();
         batch.begin();
-        batch.draw(bombermanImg, pos.x - 20, BombermanGame.HEIGHT - pos.y - 20);
+        batch.draw(bombermanImg, pos.x - BLOCK_SIZE/2, BombermanGame.HEIGHT - pos.y - BLOCK_SIZE/2);
         batch.end();
 	}
 }
