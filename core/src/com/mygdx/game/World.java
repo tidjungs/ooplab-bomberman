@@ -7,8 +7,8 @@ public class World {
     
     World(BombermanGame bombermanGame) {
     	this.bombermanGame = bombermanGame;
-    	bomberman = new Bomberman(60, 60);
     	maze = new Maze();
+    	bomberman = new Bomberman(60, 60, maze);
     }
     
     Bomberman getBomberman() {
