@@ -39,6 +39,8 @@ public class GameScreen extends ScreenAdapter {
 		} else if (Gdx.input.isKeyPressed(Keys.LEFT)) {
 			bomberman.setNextDirection(Bomberman.DIRECTION_LEFT);
 		}
+		
+        world.update(delta);
 	}
 	
 }
