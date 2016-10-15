@@ -7,12 +7,15 @@ public class MazeRenderer {
 	private Maze maze;
     private SpriteBatch batch;
     private Texture wallImage;
+    private Texture glassImage;
+
 
     public MazeRenderer(SpriteBatch batch, Maze maze) {
         this.maze = maze;
         this.batch = batch;
         
         wallImage = new Texture("wall.png");
+        glassImage = new Texture("glass.png");
     }
     
     public void render() {
@@ -27,7 +30,10 @@ public class MazeRenderer {
         		
         		if (maze.hasWallAt(r, c)) {
                     batch.draw(wallImage, x, y);
+        		} else {
+                    batch.draw(glassImage, x, y);
         		}
+        		
         		
         	}
         	
