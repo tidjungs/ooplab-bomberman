@@ -32,4 +32,9 @@ public class Maze {
 	public int getWidth() {
 		return width;
 	}
+	
+	public boolean hasWallAt(int r, int c) {
+		return MAP[r].charAt(c) == '#';
+	}
+	
 }
