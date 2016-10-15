@@ -3,17 +3,17 @@ package com.mygdx.game;
 public class Maze {
 	private String[] MAP = new String [] {
 	            "###################",
-	            "#.................#",
-	            "#.#.#.#.#.#.#.#.#.#",
-	            "#.................#",
-	            "#.#.#.#.#.#.#.#.#.#",
-	            "#.................#",
-	            "#.#.#.#.#.#.#.#.#.#",
-	            "#.................#",
-	            "#.#.#.#.#.#.#.#.#.#",
-	            "#.................#",
-	            "#.#.#.#.#.#.#.#.#.#",
-	            "#.................#",
+	            "#...XXXXXXXXXXX...#",
+	            "#.#X#X#X#X#X#X#X#.#",
+	            "#.XXXXXXXXXXXXXXX.#",
+	            "#X#X#X#X#X#X#X#X#X#",
+	            "#XXXXXXXXXXXXXXXXX#",
+	            "#X#X#X#X#X#X#X#X#X#",
+	            "#XXXXXXXXXXXXXXXXX#",
+	            "#X#X#X#X#X#X#X#X#X#",
+	            "#.XXXXXXXXXXXXXXX.#",
+	            "#.#X#X#X#X#X#X#X#.#",
+	            "#...XXXXXXXXXXX...#",
 	            "###################"    
 	};
 	
@@ -35,6 +35,10 @@ public class Maze {
 	
 	public boolean hasWallAt(int r, int c) {
 		return MAP[r].charAt(c) == '#';
+	}
+	
+	public boolean hasBoxAt(int r, int c) {
+		return MAP[r].charAt(c) == 'X';
 	}
 	
 }
