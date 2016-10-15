@@ -29,7 +29,11 @@ public class GameScreen extends ScreenAdapter {
 	}
 	
 	private void update(float delta) {
-		
+        updatePacmanDirection();
+        world.update(delta);
+	}
+	
+	private void updatePacmanDirection() {
 		if (Gdx.input.isKeyPressed(Keys.UP)) {
 			bomberman.setNextDirection(Bomberman.DIRECTION_UP);
 		} else if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
@@ -38,9 +42,9 @@ public class GameScreen extends ScreenAdapter {
 			bomberman.setNextDirection(Bomberman.DIRECTION_DOWN);
 		} else if (Gdx.input.isKeyPressed(Keys.LEFT)) {
 			bomberman.setNextDirection(Bomberman.DIRECTION_LEFT);
+		} else {
+			bomberman.setNextDirection(Bomberman.DIRECTION_STILL);
 		}
-		
-        world.update(delta);
 	}
 	
 }

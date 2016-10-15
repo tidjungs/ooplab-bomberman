@@ -19,7 +19,7 @@ public class Bomberman {
 		{-1, 0}
 	};
 	
-	public static final int SPEED = 10;
+	public static final int SPEED = 5;
 	
 	private int currentDirection;
 	private int nextDirection;
