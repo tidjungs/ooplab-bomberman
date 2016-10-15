@@ -12,11 +12,12 @@ public class GameScreen extends ScreenAdapter {
 	private Texture bombermanImg;
 	private Bomberman bomberman;
 	World world;
+	WorldRenderer worldRenderer;
 	
 	public GameScreen(BombermanGame bombermanGame) {
 		this.bombermanGame = bombermanGame;
-		bombermanImg = new Texture("bomberman.png");
         world = new World(bombermanGame);
+        worldRenderer = new WorldRenderer(bombermanGame, world);
         bomberman = world.getBomberman();
 	}
 	
@@ -24,11 +25,7 @@ public class GameScreen extends ScreenAdapter {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         update(delta);
-        SpriteBatch batch = bombermanGame.batch;
-        batch.begin();
-        Vector2 pos = bomberman.getPosition();
-        batch.draw(bombermanImg, pos.x, pos.y);
-        batch.end();
+        worldRenderer.render(delta);
 	}
 	
 	private void update(float delta) {
