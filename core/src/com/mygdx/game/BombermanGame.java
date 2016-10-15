@@ -18,7 +18,7 @@ public class BombermanGame extends Game {
 	
 	@Override
 	public void render () {
-        System.out.println("Hello ");
+		super.render();
 	}
 	
 	@Override
