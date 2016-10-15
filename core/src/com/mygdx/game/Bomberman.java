@@ -42,4 +42,18 @@ public class Bomberman {
 	public void setNextDirection(int dir) {
         nextDirection = dir;
 	}
+	
+	public void update() {
+		if (isAtCenter()) {
+            currentDirection = nextDirection;
+		}
+        position.x += SPEED * DIR_OFFSETS[currentDirection][0];
+        position.y += SPEED * DIR_OFFSETS[currentDirection][1];
+	}
+	
+	public boolean isAtCenter() {
+        int blockSize = WorldRenderer.BLOCK_SIZE;
+        return ((((int)position.x - blockSize/2) % blockSize) == 0) &&
+                ((((int)position.y - blockSize/2) % blockSize) == 0);
+	}
 }
