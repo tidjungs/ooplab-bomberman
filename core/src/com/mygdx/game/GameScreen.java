@@ -11,11 +11,13 @@ public class GameScreen extends ScreenAdapter {
 	private BombermanGame bombermanGame;
 	private Texture bombermanImg;
 	private Bomberman bomberman;
+	World world;
 	
 	public GameScreen(BombermanGame bombermanGame) {
 		this.bombermanGame = bombermanGame;
 		bombermanImg = new Texture("bomberman.png");
-		bomberman = new Bomberman(100, 100);
+        world = new World(bombermanGame);
+        bomberman = world.getBomberman();
 	}
 	
 	public void render (float delta) {
@@ -30,6 +32,7 @@ public class GameScreen extends ScreenAdapter {
 	}
 	
 	private void update(float delta) {
+		
 		if (Gdx.input.isKeyPressed(Keys.UP)) {
 			bomberman.move(Bomberman.DIRECTION_UP);
 		} else if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
