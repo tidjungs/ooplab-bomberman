@@ -7,8 +7,8 @@ import com.mygdx.game.BombermanGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.width = 800;
-		config.height = 600;
+		config.width = BombermanGame.WIDTH;;
+		config.height = BombermanGame.HEIGHT;
 		new LwjglApplication(new BombermanGame(), config);
 	}
 }
