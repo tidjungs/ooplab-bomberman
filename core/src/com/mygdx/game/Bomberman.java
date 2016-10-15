@@ -19,6 +19,8 @@ public class Bomberman {
 		{-1, 0}
 	};
 	
+	public static final int SPEED = 10;
+	
 	public Bomberman(int x, int y) {
 		position = new Vector2(x, y);
 	}
@@ -28,7 +30,7 @@ public class Bomberman {
 	}
 	
 	public void move(int dir) {
-		position.x += 10 * DIR_OFFSETS[dir][0];
-		position.y += 10 * DIR_OFFSETS[dir][1];
+		position.x += SPEED * DIR_OFFSETS[dir][0];
+		position.y += SPEED * DIR_OFFSETS[dir][1];
 	}
 }
