@@ -31,13 +31,13 @@ public class GameScreen extends ScreenAdapter {
 	private void update(float delta) {
 		
 		if (Gdx.input.isKeyPressed(Keys.UP)) {
-			bomberman.move(Bomberman.DIRECTION_UP);
+			bomberman.setNextDirection(Bomberman.DIRECTION_UP);
 		} else if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
-			bomberman.move(Bomberman.DIRECTION_RIGHT);
+			bomberman.setNextDirection(Bomberman.DIRECTION_RIGHT);
 		} else if (Gdx.input.isKeyPressed(Keys.DOWN)) {
-			bomberman.move(Bomberman.DIRECTION_DOWN);
+			bomberman.setNextDirection(Bomberman.DIRECTION_DOWN);
 		} else if (Gdx.input.isKeyPressed(Keys.LEFT)) {
-			bomberman.move(Bomberman.DIRECTION_LEFT);
+			bomberman.setNextDirection(Bomberman.DIRECTION_LEFT);
 		}
 	}
 	
