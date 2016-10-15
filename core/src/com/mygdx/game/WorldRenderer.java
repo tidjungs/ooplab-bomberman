@@ -12,16 +12,19 @@ public class WorldRenderer {
 	World world;
 	SpriteBatch batch;
 	Texture bombermanImg;
-	
+    private MazeRenderer mazeRenderer;
+
 	public WorldRenderer(BombermanGame bombermanGame, World world) {
 		this.bombermanGame = bombermanGame;
         batch = bombermanGame.batch;
         this.world = world; 
 		bombermanImg = new Texture("bomberman.png");
 		bomberman = world.getBomberman();
+        mazeRenderer = new MazeRenderer(bombermanGame.batch, world.getMaze());
 	}
 	
 	public void render (float delta) {
+        mazeRenderer.render();
         batch.begin();
         Vector2 pos = bomberman.getPosition();
         batch.draw(bombermanImg, pos.x, pos.y);
