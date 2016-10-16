@@ -25,12 +25,14 @@ public class Bomberman {
 	private int nextDirection;
 	
 	private Maze maze;
+	private Bomb bomb;
 	
-	public Bomberman(int x, int y, Maze maze) {
+	public Bomberman(int x, int y, Maze maze, Bomb bomb) {
 		position = new Vector2(x, y);
 		currentDirection = DIRECTION_STILL;
         nextDirection = DIRECTION_STILL;
         this.maze = maze;
+        this.bomb = bomb;
 	}
 	
 	public Vector2 getPosition() {
@@ -67,7 +69,7 @@ public class Bomberman {
 	private boolean canMoveInDirection(int dir) {
 		int newRow = getRow() + DIR_OFFSETS[dir][1];
 		int newCol = getCol() + DIR_OFFSETS[dir][0];
-		return !maze.hasWallAt(newRow, newCol);
+		return !maze.hasWallAt(newRow, newCol) && !maze.hasBoxAt(newRow, newCol);
 	}
 	
 	private int getRow() {
@@ -77,4 +79,8 @@ public class Bomberman {
 	private int getCol() {
         return ((int)position.x) / WorldRenderer.BLOCK_SIZE; 
     }
+	
+	public void plantBomb() {
+		bomb.plantBomp(getRow(), getCol());
+	}
 }

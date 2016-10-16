@@ -16,7 +16,7 @@ public class Maze {
 	            "#...XXXXXXXXXXX...#",
 	            "###################"    
 	};
-	
+		
 	private int height;
 	private int width;
 	

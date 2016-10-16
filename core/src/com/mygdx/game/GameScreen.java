@@ -29,11 +29,18 @@ public class GameScreen extends ScreenAdapter {
 	}
 	
 	private void update(float delta) {
-        updatePacmanDirection();
+        updateBombermanDirection();
+        updateBomberManActivity();
         world.update(delta);
 	}
 	
-	private void updatePacmanDirection() {
+	private void updateBomberManActivity() {
+		if(Gdx.input.isKeyPressed(Keys.SPACE)) {
+			bomberman.plantBomb();
+		}
+	}
+	
+	private void updateBombermanDirection() {
 		if (Gdx.input.isKeyPressed(Keys.UP)) {
 			bomberman.setNextDirection(Bomberman.DIRECTION_UP);
 		} else if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
@@ -44,7 +51,7 @@ public class GameScreen extends ScreenAdapter {
 			bomberman.setNextDirection(Bomberman.DIRECTION_LEFT);
 		} else {
 			bomberman.setNextDirection(Bomberman.DIRECTION_STILL);
-		}
+		} 
 	}
 	
 }
