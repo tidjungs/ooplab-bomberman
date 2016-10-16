@@ -56,6 +56,7 @@ public class Bomb {
 	
 	private void checkExplode(int row, int col) {
 		if(timeBomb[row][col] == 0) {
+			world.getBomberman().receivePlantBomp();
 			for(int i=row-BOMBAREA; i<=row+BOMBAREA; i++) {
 				for(int j=col-BOMBAREA; j<=col+BOMBAREA; j++) {
 					if(i == row || j == col) {
