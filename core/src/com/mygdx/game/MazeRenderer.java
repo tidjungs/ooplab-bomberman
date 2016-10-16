@@ -15,9 +15,9 @@ public class MazeRenderer {
         this.maze = maze;
         this.batch = batch;
         
-        wallImage = new Texture("wall.png");
+        wallImage = new Texture("SolidBlock.png");
         glassImage = new Texture("glass.png");
-        boxImage = new Texture("box.png");
+        boxImage = new Texture("ExplodableBlock.png");
     }
     
     public void render() {

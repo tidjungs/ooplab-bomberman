@@ -58,6 +58,11 @@ public class Bomberman {
 	}
 	
 	public void update() {
+		
+		if(isTouchingFire()) {
+			die();
+		}
+		
 		if (isAtCenter()) {
 			if(canMoveInDirection(nextDirection)) {
 	            currentDirection = nextDirection;
@@ -94,6 +99,10 @@ public class Bomberman {
 			bomb.newBomp(getRow(), getCol());
 			bombPlant++;
 		}
+	}
+	
+	public boolean isTouchingFire() {
+		return bomb.hasFireAt(getRow(), getCol());
 	}
 	
 	public void die() {

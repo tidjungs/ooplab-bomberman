@@ -36,20 +36,9 @@ public class World {
     	if(bomberman.isAlive()) {
     		bomberman.update();
     	}
-    	
+    	    	
     	if(bomberman2.isAlive()) {
     		bomberman2.update();
-    	}
-    }
-    
-    public void explode(int row, int col) {
-    	    	
-    	if(bomberman.getRow() == row && bomberman.getCol() == col) {
-    		bomberman.die();
-    	}
-    	
-    	if(bomberman2.getRow() == row && bomberman2.getCol() == col) {
-    		bomberman2.die();
     	}
     }
     
