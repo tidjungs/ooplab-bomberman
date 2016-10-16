@@ -55,12 +55,18 @@ public class Maze {
 		return Box[r][c];
 	}
 	
-	public void explodeBox(int [] row, int [] col) {
-		for(int i=0; i<5; i++) {
-			if(hasBoxAt(row[i], col[i])) {
-				Box[row[i]][col[i]] = false;
-			}
+	public void explodeBox(int r, int c) {
+		if(hasBoxAt(r, c)) {
+			Box[r][c] = false;
 		}
 	}
+	
+//	public void explodeBox(int [] row, int [] col) {
+//		for(int i=0; i<5; i++) {
+//			if(hasBoxAt(row[i], col[i])) {
+//				Box[row[i]][col[i]] = false;
+//			}
+//		}
+//	}
 	
 }

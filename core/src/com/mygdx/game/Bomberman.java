@@ -26,7 +26,7 @@ public class Bomberman {
 	
 	private Maze maze;
 	private Bomb bomb;
-	
+		
 	public Bomberman(int x, int y, Maze maze, Bomb bomb) {
 		position = new Vector2(x, y);
 		currentDirection = DIRECTION_STILL;
@@ -83,4 +83,5 @@ public class Bomberman {
 	public void plantBomb() {
 		bomb.plantBomp(getRow(), getCol());
 	}
+	
 }

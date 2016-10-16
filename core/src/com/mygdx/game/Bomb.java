@@ -6,6 +6,8 @@ public class Bomb {
 	private int width;
 	private Maze maze;
 	
+	private int BOMBAREA = 1;
+	
 	public Bomb(Maze maze) {
 		this.maze = maze;
 		height = maze.getHeight();
@@ -46,9 +48,13 @@ public class Bomb {
 	
 	private void checkExplode(int row, int col) {
 		if(timeBomb[row][col] == 0) {
-			int [] explodeฺBlockRow = new int [] {row-1, row, row, row, row+1};
-			int [] explodeฺBlockCol = new int [] {col, col,col-1, col+1, col};
-			maze.explodeBox(explodeฺBlockRow, explodeฺBlockCol);
+			for(int i=row-BOMBAREA; i<=row+BOMBAREA; i++) {
+				for(int j=col-BOMBAREA; j<=col+BOMBAREA; j++) {
+					if(i == row || j == col) {
+						maze.explodeBox(i, j);
+					}
+				}
+			}
 		}
 	}
 	
