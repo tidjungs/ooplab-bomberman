@@ -16,13 +16,27 @@ public class Maze {
 	            "#...XXXXXXXXXXX...#",
 	            "###################"    
 	};
-		
+	
+	private boolean [][] Box;
+	
 	private int height;
 	private int width;
 	
 	public Maze() {
 		height = MAP.length;
 		width = MAP[0].length();
+		inintialBox();
+	}
+	
+	private void inintialBox() {
+		Box = new boolean [height][width];
+		for(int r=0; r < height; r++) {
+			for(int c=0; c < width; c++) {
+				if(MAP[r].charAt(c) == 'X') {
+					Box[r][c] = true;
+				}
+			}
+		}
 	}
 	
 	public int getHeight() {
@@ -38,7 +52,14 @@ public class Maze {
 	}
 	
 	public boolean hasBoxAt(int r, int c) {
-		return MAP[r].charAt(c) == 'X';
+		return Box[r][c];
+	}
+	
+	public void explodeBox(int [] row, int [] col) {
+		for(int i=0; i<5; i++) {
+			if(hasBoxAt(row[i], col[i])) {
+			}
+		}
 	}
 	
 }

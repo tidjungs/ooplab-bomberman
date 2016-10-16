@@ -4,8 +4,10 @@ public class Bomb {
 	private int [][] timeBomb;
 	private int height;
 	private int width;
+	private Maze maze;
 	
 	public Bomb(Maze maze) {
+		this.maze = maze;
 		height = maze.getHeight();
 		width = maze.getWidth();
 		initBombData();
@@ -39,6 +41,16 @@ public class Bomb {
 	
 	public void decreaseTimeBomb(int row, int col) {
 		timeBomb[row][col]--;
+		checkExplode(row, col);
 	}
+	
+	private void checkExplode(int row, int col) {
+		if(timeBomb[row][col] == 0) {
+			int [] explodeฺBlockRow = new int [] {row-1, row, row, row, row+1};
+			int [] explodeฺBlockCol = new int [] {col, col,col-1, col+1, col};
+			maze.explodeBox(explodeฺBlockRow, explodeฺBlockCol);
+		}
+	}
+	
 	
 }
