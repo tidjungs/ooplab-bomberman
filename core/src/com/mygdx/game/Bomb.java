@@ -36,7 +36,7 @@ public class Bomb {
 	}
 	
 	public void plantBomp(int row, int col) {
-		timeBomb[row][col] = 300;
+		timeBomb[row][col] = 150;
 	}
 	
 	public void decreaseTimeBomb(int row, int col) {
