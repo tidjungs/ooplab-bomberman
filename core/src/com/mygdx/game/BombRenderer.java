@@ -13,7 +13,17 @@ public class BombRenderer {
     
     private Texture bombImage;
     
+    private Texture fireImage1;
+    private Texture fireImage2;
+    private Texture fireImage3;
+    private Texture fireImage4;
+    private Texture fireImage5;
+
+    
+    private Texture fireImage;
+    
     private int counter = 0;
+    private int fireCounter = 0;
 	
 	public BombRenderer(SpriteBatch batch, Bomb bomb) {
 		this.bomb = bomb;
@@ -23,6 +33,15 @@ public class BombRenderer {
         bombImage3 = new Texture("Bomb_f03.png");
         
         bombImage = bombImage1;
+        
+        fireImage1 = new Texture("Flame_f00.png");
+        fireImage2 = new Texture("Flame_f01.png");
+        fireImage3 = new Texture("Flame_f02.png");
+        fireImage4 = new Texture("Flame_f03.png");
+        fireImage5 = new Texture("Flame_f04.png");
+
+        fireImage = fireImage1;
+
 	}
 	
 	public void render() {
@@ -35,13 +54,40 @@ public class BombRenderer {
 	        		int y = BombermanGame.HEIGHT - (r * WorldRenderer.BLOCK_SIZE) - WorldRenderer.BLOCK_SIZE;
 	        		
 	        		if (bomb.hasBombAt(r, c)) {
+	        			
 	                    batch.draw(bombImage, x, y);
 	                    bomb.decreaseTimeBomb(r, c);
-	        		} 
+	                   
+	        		}
+	        		
+	        		if(bomb.hasFireAt(r, c)) {
+	        			changFireImage();
+	                    batch.draw(fireImage, x, y);
+	                    bomb.decreaseFire(r, c);
+	                    
+	        		}
 	        	
 			}     	
 	    }
 		batch.end();
+	}
+	
+	public void changFireImage() {
+		if(fireCounter == 2) {
+			fireImage = fireImage2;
+		} else if (fireCounter == 4) {
+			fireImage = fireImage3;
+		} else if (fireCounter == 6) {
+			fireImage = fireImage4;
+		} else if (fireCounter == 8) {
+			fireImage = fireImage5;
+		} else {
+			fireImage = fireImage1;
+		}
+		
+		if(fireCounter++ >= 10) {
+			fireCounter = 0;
+		}
 	}
 	
 	public void changeBombImage() {
@@ -53,7 +99,7 @@ public class BombRenderer {
 			bombImage = bombImage1;
 		}
 		
-		if(counter++ == 20) {
+		if(counter++ >= 30) {
 			counter = 0;
 		}
 	}

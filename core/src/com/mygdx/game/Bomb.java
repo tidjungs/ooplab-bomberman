@@ -2,6 +2,7 @@ package com.mygdx.game;
 
 public class Bomb {
 	private int [][] timeBomb;
+	private int [][] fire;
 	private int height;
 	private int width;
 	
@@ -15,15 +16,17 @@ public class Bomb {
 		this.world = world;
 		height = maze.getHeight();
 		width = maze.getWidth();
-		initBombData();
+		initialData();
 	}
 	
-	private void initBombData() {
+	private void initialData() {
 		timeBomb = new int [height][width];
+		fire = new int [height][width];
 		
 		for(int r=0; r < height; r++) {
 			for(int c=0; c < width; c++) {
 				timeBomb[r][c] = 0;
+				fire[r][c] = 0;
 			}
 		}
 	}
@@ -37,8 +40,15 @@ public class Bomb {
 	}
 	
 	public boolean hasBombAt(int row, int col) {
-
 		return timeBomb[row][col] != 0;
+	}
+	
+	public boolean hasFireAt(int row, int col) {
+		return fire[row][col] != 0;
+	}
+	
+	public int getTimeBomb(int row, int col) {
+		return timeBomb[row][col];
 	}
 	
 	public void newBomp(int row, int col) {
@@ -48,6 +58,10 @@ public class Bomb {
 	public void decreaseTimeBomb(int row, int col) {
 		timeBomb[row][col]--;
 		checkExplode(row, col);
+	}
+	
+	public void decreaseFire(int row, int col) {
+		fire[row][col]--;
 	}
 	
 	public boolean canPassBomb(int row, int col) {
@@ -62,6 +76,9 @@ public class Bomb {
 					if(i == row || j == col) {
 						maze.explodeBox(i, j);
 						world.explode(i, j);
+						if(!maze.hasWallAt(i, j)) {
+							fire[i][j] = 50;
+						}
 					}
 				}
 			}
