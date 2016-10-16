@@ -46,6 +46,10 @@ public class Bomb {
 		checkExplode(row, col);
 	}
 	
+	public boolean canPassBomb(int row, int col) {
+		return timeBomb[row][col] > 120 || timeBomb[row][col] == 0;
+	}
+	
 	private void checkExplode(int row, int col) {
 		if(timeBomb[row][col] == 0) {
 			for(int i=row-BOMBAREA; i<=row+BOMBAREA; i++) {
