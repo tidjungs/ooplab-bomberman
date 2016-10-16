@@ -40,11 +40,11 @@ public class GameScreen extends ScreenAdapter {
 	}
 	
 	private void updateBomberManActivity() {
-		if (Gdx.input.isKeyPressed(Keys.ENTER)) {
+		if (Gdx.input.isKeyPressed(Keys.SPACE)) {
 			bomberman.plantBomp();
 		}
 		
-		if (Gdx.input.isKeyPressed(Keys.SPACE)) {
+		if (Gdx.input.isKeyPressed(Keys.B)) {
 			bomberman2.plantBomp();	
 		}
 	}

@@ -67,8 +67,4 @@ public class Bomb {
 		}
 	}
 	
-//	private boolean explodeBomberman(int row, int col) {
-//		return bomberman.getRow() == row && bomberman.getCol() == col;
-//	}
-	
 }

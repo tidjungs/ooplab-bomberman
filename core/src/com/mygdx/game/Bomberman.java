@@ -28,6 +28,9 @@ public class Bomberman {
 	private Bomb bomb;
 	
 	private boolean alive = true;
+	
+	private int bombLimit = 1;
+	private int bombPlant = 0;
 		
 	public Bomberman(int x, int y, Maze maze, Bomb bomb) {
 		position = new Vector2(x, y);
@@ -83,7 +86,10 @@ public class Bomberman {
     }
 	
 	public void plantBomp() {
-		bomb.newBomp(getRow(), getCol());
+		if (canBombAgain()) {
+			bomb.newBomp(getRow(), getCol());
+			bombPlant++;
+		}
 	}
 	
 	public void die() {
@@ -92,6 +98,14 @@ public class Bomberman {
 	
 	public boolean isAlive() {
 		return alive;
+	}
+	
+	private boolean canBombAgain() {
+		return bombPlant < bombLimit;
+	}
+	
+	public void receivePlantBomp() {
+		bombPlant--;
 	}
 	
 }

@@ -43,8 +43,15 @@ public class World {
     }
     
     public void explode(int row, int col) {
+    	
+    	bomberman.receivePlantBomp();
+    	
     	if(bomberman.getRow() == row && bomberman.getCol() == col) {
     		bomberman.die();
+    	}
+    	
+    	if(bomberman2.getRow() == row && bomberman2.getCol() == col) {
+    		bomberman2.die();
     	}
     }
     
