@@ -11,6 +11,7 @@ public class GameScreen extends ScreenAdapter {
 	private BombermanGame bombermanGame;
 	private Texture bombermanImg;
 	private Bomberman bomberman;
+	private Bomb bomb;
 	World world;
 	WorldRenderer worldRenderer;
 	
@@ -19,6 +20,7 @@ public class GameScreen extends ScreenAdapter {
         world = new World(bombermanGame);
         worldRenderer = new WorldRenderer(bombermanGame, world);
         bomberman = world.getBomberman();
+        bomb = world.getBomb();
 	}
 	
 	public void render (float delta) {
@@ -36,7 +38,7 @@ public class GameScreen extends ScreenAdapter {
 	
 	private void updateBomberManActivity() {
 		if(Gdx.input.isKeyPressed(Keys.SPACE)) {
-			bomberman.plantBomb();
+			bomberman.plantBomp();
 		}
 	}
 	

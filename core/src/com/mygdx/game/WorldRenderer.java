@@ -33,7 +33,9 @@ public class WorldRenderer {
         bombRenderer.render();
         Vector2 pos = bomberman.getPosition();
         batch.begin();
-        batch.draw(bombermanImg, pos.x - BLOCK_SIZE/2, BombermanGame.HEIGHT - pos.y - BLOCK_SIZE/2);
+        if(bomberman.isAlive()) {
+        	batch.draw(bombermanImg, pos.x - BLOCK_SIZE/2, BombermanGame.HEIGHT - pos.y - BLOCK_SIZE/2);
+        }
         batch.end();
 	}
 }

@@ -9,9 +9,8 @@ public class World {
     World(BombermanGame bombermanGame) {
     	this.bombermanGame = bombermanGame;
     	maze = new Maze();
-    	bomb = new Bomb(maze);
+    	bomb = new Bomb(maze, this);
     	bomberman = new Bomberman(60, 60, maze, bomb);
-    	
     }
     
     public Bomberman getBomberman() {
@@ -27,6 +26,15 @@ public class World {
     }
     
     public void update(float delta) {
-        bomberman.update();
+    	if(bomberman.isAlive()) {
+    		bomberman.update();
+    	}
     }
+    
+    public void explode(int row, int col) {
+    	if(bomberman.getRow() == row && bomberman.getCol() == col) {
+    		bomberman.die();
+    	}
+    }
+    
 }

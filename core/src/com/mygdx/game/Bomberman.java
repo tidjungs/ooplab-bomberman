@@ -23,9 +23,11 @@ public class Bomberman {
 	
 	private int currentDirection;
 	private int nextDirection;
-	
+		
 	private Maze maze;
 	private Bomb bomb;
+	
+	private boolean alive = true;
 		
 	public Bomberman(int x, int y, Maze maze, Bomb bomb) {
 		position = new Vector2(x, y);
@@ -72,16 +74,24 @@ public class Bomberman {
 		return !maze.hasWallAt(newRow, newCol) && !maze.hasBoxAt(newRow, newCol) && bomb.canPassBomb(newRow, newCol);
 	}
 	
-	private int getRow() {
+	public int getRow() {
         return ((int)position.y) / WorldRenderer.BLOCK_SIZE; 
 	}
 	
-	private int getCol() {
+	public int getCol() {
         return ((int)position.x) / WorldRenderer.BLOCK_SIZE; 
     }
 	
-	public void plantBomb() {
-		bomb.plantBomp(getRow(), getCol());
+	public void plantBomp() {
+		bomb.newBomp(getRow(), getCol());
+	}
+	
+	public void die() {
+		alive = false;
+	}
+	
+	public boolean isAlive() {
+		return alive;
 	}
 	
 }

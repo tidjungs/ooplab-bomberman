@@ -4,12 +4,15 @@ public class Bomb {
 	private int [][] timeBomb;
 	private int height;
 	private int width;
+	
 	private Maze maze;
 	
 	private int BOMBAREA = 1;
+	private World world;
 	
-	public Bomb(Maze maze) {
+	public Bomb(Maze maze, World world) {
 		this.maze = maze;
+		this.world = world;
 		height = maze.getHeight();
 		width = maze.getWidth();
 		initBombData();
@@ -34,10 +37,11 @@ public class Bomb {
 	}
 	
 	public boolean hasBombAt(int row, int col) {
+
 		return timeBomb[row][col] != 0;
 	}
 	
-	public void plantBomp(int row, int col) {
+	public void newBomp(int row, int col) {
 		timeBomb[row][col] = 150;
 	}
 	
@@ -56,11 +60,15 @@ public class Bomb {
 				for(int j=col-BOMBAREA; j<=col+BOMBAREA; j++) {
 					if(i == row || j == col) {
 						maze.explodeBox(i, j);
+						world.explode(i, j);
 					}
 				}
 			}
 		}
 	}
 	
+//	private boolean explodeBomberman(int row, int col) {
+//		return bomberman.getRow() == row && bomberman.getCol() == col;
+//	}
 	
 }
