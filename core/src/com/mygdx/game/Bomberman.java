@@ -40,6 +40,10 @@ public class Bomberman {
         this.bomb = bomb;
 	}
 	
+	public int getCurrentDirection() {
+		return currentDirection;
+	}
+	
 	public Vector2 getPosition() {
 		return position;
 	}
