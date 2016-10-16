@@ -26,6 +26,7 @@ public class BombRenderer {
 	        		
 	        		if (bomb.hasBombAt(r, c)) {
 	                    batch.draw(bombImage, x, y);
+	                    bomb.decreaseTimeBomb(r, c);
 	        		} 
 	        	
 			}     	

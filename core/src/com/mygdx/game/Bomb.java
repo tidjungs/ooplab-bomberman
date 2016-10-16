@@ -1,7 +1,7 @@
 package com.mygdx.game;
 
 public class Bomb {
-	private boolean [][] hasBomb;
+	private int [][] timeBomb;
 	private int height;
 	private int width;
 	
@@ -12,10 +12,11 @@ public class Bomb {
 	}
 	
 	private void initBombData() {
-		hasBomb = new boolean[height][width];
+		timeBomb = new int [height][width];
+		
 		for(int r=0; r < height; r++) {
 			for(int c=0; c < width; c++) {
-				hasBomb[r][c] = false;
+				timeBomb[r][c] = 0;
 			}
 		}
 	}
@@ -29,10 +30,15 @@ public class Bomb {
 	}
 	
 	public boolean hasBombAt(int row, int col) {
-		return hasBomb[row][col];
+		return timeBomb[row][col] != 0;
 	}
 	
 	public void plantBomp(int row, int col) {
-		hasBomb[row][col] = true;
+		timeBomb[row][col] = 300;
 	}
+	
+	public void decreaseTimeBomb(int row, int col) {
+		timeBomb[row][col]--;
+	}
+	
 }
