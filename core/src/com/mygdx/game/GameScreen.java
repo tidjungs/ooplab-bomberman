@@ -11,7 +11,7 @@ public class GameScreen extends ScreenAdapter {
 	private BombermanGame bombermanGame;
 	private Texture bombermanImg;
 	private Bomberman bomberman;
-	private Bomberman bomberman2;
+	// private Bomberman bomberman2;
 
 	private Bomb bomb;
 	World world;
@@ -22,7 +22,7 @@ public class GameScreen extends ScreenAdapter {
         world = new World(bombermanGame);
         worldRenderer = new WorldRenderer(bombermanGame, world);
         bomberman = world.getBomberman();
-        bomberman2 = world.getBomberman2();
+        // bomberman2 = world.getBomberman2();
         bomb = world.getBomb();
 	}
 	
@@ -62,17 +62,17 @@ public class GameScreen extends ScreenAdapter {
 			bomberman.setNextDirection(Bomberman.DIRECTION_STILL);
 		} 
 		
-		if (Gdx.input.isKeyPressed(Keys.W)) {
-			bomberman2.setNextDirection(Bomberman.DIRECTION_UP);
-		} else if (Gdx.input.isKeyPressed(Keys.D)) {
-			bomberman2.setNextDirection(Bomberman.DIRECTION_RIGHT);
-		} else if (Gdx.input.isKeyPressed(Keys.S)) {
-			bomberman2.setNextDirection(Bomberman.DIRECTION_DOWN);
-		} else if (Gdx.input.isKeyPressed(Keys.A)) {
-			bomberman2.setNextDirection(Bomberman.DIRECTION_LEFT);
-		} else {
-			bomberman2.setNextDirection(Bomberman.DIRECTION_STILL);
-		} 
+		// if (Gdx.input.isKeyPressed(Keys.W)) {
+		// 	bomberman2.setNextDirection(Bomberman.DIRECTION_UP);
+		// } else if (Gdx.input.isKeyPressed(Keys.D)) {
+		// 	bomberman2.setNextDirection(Bomberman.DIRECTION_RIGHT);
+		// } else if (Gdx.input.isKeyPressed(Keys.S)) {
+		// 	bomberman2.setNextDirection(Bomberman.DIRECTION_DOWN);
+		// } else if (Gdx.input.isKeyPressed(Keys.A)) {
+		// 	bomberman2.setNextDirection(Bomberman.DIRECTION_LEFT);
+		// } else {
+		// 	bomberman2.setNextDirection(Bomberman.DIRECTION_STILL);
+		// } 
 		
 	}
 	

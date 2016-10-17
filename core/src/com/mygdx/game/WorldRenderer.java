@@ -12,7 +12,7 @@ public class WorldRenderer {
 	
 	BombermanGame bombermanGame;
 	Bomberman bomberman;
-	Bomberman bomberman2;
+	// Bomberman bomberman2;
 
 	World world;
 	SpriteBatch batch;
@@ -39,7 +39,7 @@ public class WorldRenderer {
         bombermanImg = bombermanFrontImg;
         
 		bomberman = world.getBomberman();
-		bomberman2 = world.getBomberman2();
+		// bomberman2 = world.getBomberman2();
 
         mazeRenderer = new MazeRenderer(bombermanGame.batch, world.getMaze());
         bombRenderer = new BombRenderer(bombermanGame.batch, world.getBomb());

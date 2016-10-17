@@ -2,7 +2,7 @@ package com.mygdx.game;
 
 public class World {
 	private Bomberman bomberman;
-	private Bomberman bomberman2;
+	// private Bomberman bomberman2;
 
     private BombermanGame bombermanGame;
     private Maze maze;
@@ -13,18 +13,18 @@ public class World {
     	this.bombermanGame = bombermanGame;
     	maze = new Maze();
     	bomb = new Bomb(maze, this);
-    	bomberman = new Bomberman(60, 60, maze, bomb);
-    	bomberman2 = new Bomberman(700, 460, maze, bomb);
-    	item = new Item(maze);
+        item = new Item(maze);
+    	bomberman = new Bomberman(60, 60, maze, bomb, item);
+    	// bomberman2 = new Bomberman(700, 460, maze, bomb);
     }
     
     public Bomberman getBomberman() {
     	return bomberman;
     }
     
-    public Bomberman getBomberman2() {
-    	return bomberman2;
-    }
+    // public Bomberman getBomberman2() {
+    // 	return bomberman2;
+    // }
     
     public Maze getMaze() {
     	return maze;
@@ -43,9 +43,9 @@ public class World {
     		bomberman.update();
     	}
     	    	
-    	if(bomberman2.isAlive()) {
-    		bomberman2.update();
-    	}
+    	// if(bomberman2.isAlive()) {
+    	// 	bomberman2.update();
+    	// }
     }
     
     public void explode(int r, int c) {

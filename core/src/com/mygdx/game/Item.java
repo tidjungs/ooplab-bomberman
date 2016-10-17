@@ -67,6 +67,10 @@ public class Item {
 	public boolean isSpawn(int r, int c) {
 		return itemState[r][c] == IS_SPAWN;
 	}
+
+	public void collect(int r, int c) {
+		itemState[r][c] = IS_COLLECT;
+	}
 	
 	public void spawn(int r, int c) {
 		if(hasItemAt(r, c) && itemState[r][c] ==  NOT_SPAWN) {

@@ -26,18 +26,20 @@ public class Bomberman {
 		
 	private Maze maze;
 	private Bomb bomb;
+	private Item item;
 	
 	private boolean alive = true;
 	
 	private int bombLimit = 1;
 	private int bombPlant = 0;
 		
-	public Bomberman(int x, int y, Maze maze, Bomb bomb) {
+	public Bomberman(int x, int y, Maze maze, Bomb bomb, Item item) {
 		position = new Vector2(x, y);
 		currentDirection = DIRECTION_STILL;
-        nextDirection = DIRECTION_STILL;
-        this.maze = maze;
-        this.bomb = bomb;
+    nextDirection = DIRECTION_STILL;
+    this.maze = maze;
+    this.bomb = bomb;
+    this.item = item;
 	}
 	
 	public int getCurrentDirection() {
@@ -61,6 +63,9 @@ public class Bomberman {
 		
 		if(isTouchingFire()) {
 			die();
+		}
+		if(isTouchingItem()) {
+			collectItem();
 		}
 		
 		if (isAtCenter()) {
@@ -95,8 +100,12 @@ public class Bomberman {
     }
 	
 	public void plantBomp() {
-		if (canBombAgain()) {
-			bomb.newBomp(getRow(), getCol());
+
+		int r = getRow();
+		int c = getCol();
+
+		if (canBombAgain() && !bomb.hasBombAt(r, c)) {
+			bomb.newBomp(r, c);
 			bombPlant++;
 		}
 	}
@@ -120,5 +129,13 @@ public class Bomberman {
 	public void receivePlantBomp() {
 		bombPlant--;
 	}
-	
+
+	public boolean isTouchingItem() {
+		return item.isSpawn(getRow(), getCol());
+	}
+
+	public void collectItem() {
+		item.collect(getRow(), getCol());
+		bombLimit++;
+	}
 }
