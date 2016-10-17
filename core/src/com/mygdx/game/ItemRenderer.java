@@ -26,7 +26,7 @@ public class ItemRenderer {
 	        		int x = c * WorldRenderer.BLOCK_SIZE;
 	        		int y = BombermanGame.HEIGHT - (r * WorldRenderer.BLOCK_SIZE) - WorldRenderer.BLOCK_SIZE;
 	        		
-	        		if (item.hasItemAt(r, c)) {
+	        		if (item.isSpawn(r, c)) {
 	        			batch.draw(itemImage, x, y);
 	        		}
 			}     	

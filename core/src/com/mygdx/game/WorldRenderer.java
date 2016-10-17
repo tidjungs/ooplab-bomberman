@@ -48,8 +48,8 @@ public class WorldRenderer {
 	
 	public void render (float delta) {
         mazeRenderer.render();
-        bombRenderer.render();
         itemRenderer.render();
+        bombRenderer.render();
         Vector2 pos = bomberman.getPosition();
 //        Vector2 pos2 = bomberman2.getPosition();
         
@@ -57,7 +57,7 @@ public class WorldRenderer {
         
         if(bomberman.isAlive()) {
         	renderBombermanByDirection();
-			batch.draw(bombermanImg, pos.x - BLOCK_SIZE/2, BombermanGame.HEIGHT - pos.y - BLOCK_SIZE/2);
+					batch.draw(bombermanImg, pos.x - BLOCK_SIZE/2, BombermanGame.HEIGHT - pos.y - BLOCK_SIZE/2);
         }
         
 //        if(bomberman2.isAlive()) {
