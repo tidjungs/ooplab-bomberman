@@ -19,24 +19,24 @@ public class GameScreen extends ScreenAdapter {
 	
 	public GameScreen(BombermanGame bombermanGame) {
 		this.bombermanGame = bombermanGame;
-        world = new World(bombermanGame);
-        worldRenderer = new WorldRenderer(bombermanGame, world);
-        bomberman = world.getBomberman();
-        // bomberman2 = world.getBomberman2();
-        bomb = world.getBomb();
+    world = new World(bombermanGame);
+    worldRenderer = new WorldRenderer(bombermanGame, world);
+    bomberman = world.getBomberman();
+    // bomberman2 = world.getBomberman2();
+    bomb = world.getBomb();
 	}
 	
 	public void render (float delta) {
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        update(delta);
-        worldRenderer.render(delta);
+    Gdx.gl.glClearColor(0, 0, 0, 1);
+    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    update(delta);
+    worldRenderer.render(delta);
 	}
 	
 	private void update(float delta) {
-        updateBombermanDirection();
-        updateBomberManActivity();
-        world.update(delta);
+    updateBombermanDirection();
+    updateBomberManActivity();
+    world.update(delta);
 	}
 	
 	private void updateBomberManActivity() {

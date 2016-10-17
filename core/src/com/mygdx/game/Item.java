@@ -14,8 +14,12 @@ public class Item {
 
 	private Maze maze;
 
-	private static final int NUMBEROFITEM = 60;
-	
+	private static final int NUMBER_OF_POWERUP_BOMP= 10;
+	private static final int NUMBER_OF_POWERUP_FRAME= 10;
+
+	public static final int POWERUP_BOMP= 11;
+	public static final int POWERUP_FRAME= 12;
+
 	public Item(Maze maze) {
 		this.maze = maze;
 		
@@ -23,7 +27,10 @@ public class Item {
 		width = maze.getWidth();
 		
 		initialItem();
-		randomSpawnPoint();
+
+		randomSpawnPoint(NUMBER_OF_POWERUP_BOMP, POWERUP_BOMP);
+		randomSpawnPoint(NUMBER_OF_POWERUP_FRAME, POWERUP_FRAME);
+
 	}
 
 	public int getWidth() {
@@ -46,22 +53,22 @@ public class Item {
 		}
 	}
 
-	private void randomSpawnPoint() {
-		int itemLeft = NUMBEROFITEM;
+	private void randomSpawnPoint(int numberOfItem, int type) {
+		int itemLeft = numberOfItem;
 		while(itemLeft > 0) {
 			
 			int rowRandom = (int)(Math.random() * height);
 			int colRandom = (int)(Math.random() * width);
 			
 			if (!hasItemAt(rowRandom, colRandom) && maze.hasBoxAt(rowRandom, colRandom)) {
-				itemType[rowRandom][colRandom] = 1;
+				itemType[rowRandom][colRandom] = type;
 				itemLeft--;
 			}
 		}
 	}
 
 	public boolean hasItemAt(int r, int c) {
-		return itemType[r][c] == 1;
+		return itemType[r][c] == POWERUP_BOMP|| itemType[r][c] == POWERUP_FRAME;
 	}
 
 	public boolean isSpawn(int r, int c) {
@@ -70,6 +77,10 @@ public class Item {
 
 	public void collect(int r, int c) {
 		itemState[r][c] = IS_COLLECT;
+	}
+
+	public int getItemType(int r, int c) {
+		return itemType[r][c];
 	}
 	
 	public void spawn(int r, int c) {
