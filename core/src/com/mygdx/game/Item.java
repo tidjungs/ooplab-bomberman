@@ -2,9 +2,13 @@ package com.mygdx.game;
 
 public class Item {
 	
+	public static final int NOT_SPAWN = 0;
+	public static final int IS_SPAWN = 1;
+	public static final int IS_COLLECT = 2;
+
 	private int itemType [][];
-	private boolean isItemSpawn [][];
-	
+	private int itemState [][];
+
 	private int height;
 	private int width;
 
@@ -32,12 +36,12 @@ public class Item {
 	
 	private void initialItem() {
 		itemType = new int [height][width];
-		isItemSpawn = new boolean [height][width];
+		itemState = new int [height][width];
 
 		for(int r=0; r < height; r++) {
 			for(int c=0; c < width; c++) {
 				itemType[r][c] = 0;
-				isItemSpawn[r][c] = false;
+				itemState[r][c] = NOT_SPAWN;
 			}
 		}
 	}
@@ -61,12 +65,12 @@ public class Item {
 	}
 
 	public boolean isSpawn(int r, int c) {
-		return isItemSpawn[r][c];
+		return itemState[r][c] == IS_SPAWN;
 	}
 	
 	public void spawn(int r, int c) {
-		if(hasItemAt(r, c) && !isItemSpawn[r][c]) {
-			isItemSpawn[r][c] = true;
+		if(hasItemAt(r, c) && itemState[r][c] ==  NOT_SPAWN) {
+			itemState[r][c] = IS_SPAWN;
 		}
 	}
 	
