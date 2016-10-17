@@ -15,7 +15,7 @@ public class Item {
 	private Maze maze;
 
 	private static final int NUMBER_OF_POWERUP_BOMP= 10;
-	private static final int NUMBER_OF_POWERUP_FRAME= 10;
+	private static final int NUMBER_OF_POWERUP_FRAME= 6;
 
 	public static final int POWERUP_BOMP= 11;
 	public static final int POWERUP_FRAME= 12;
