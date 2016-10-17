@@ -74,7 +74,7 @@ public class Bomb {
 			for(int i=row-BOMBAREA; i<=row+BOMBAREA; i++) {
 				for(int j=col-BOMBAREA; j<=col+BOMBAREA; j++) {
 					if(i == row || j == col) {
-						maze.explodeBox(i, j);
+						world.explode(i, j);
 						if(!maze.hasWallAt(i, j)) {
 							fire[i][j] = 50;
 						}

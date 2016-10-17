@@ -6,42 +6,41 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class BombRenderer {
 	
 	private Bomb bomb;
-    private SpriteBatch batch;
-    private Texture bombImage1;
-    private Texture bombImage2;
-    private Texture bombImage3;
-    
-    private Texture bombImage;
-    
-    private Texture fireImage1;
-    private Texture fireImage2;
-    private Texture fireImage3;
-    private Texture fireImage4;
-    private Texture fireImage5;
+  private SpriteBatch batch;
+  private Texture bombImage1;
+  private Texture bombImage2;
+  private Texture bombImage3;
+  
+  private Texture bombImage;
+  
+  private Texture fireImage1;
+  private Texture fireImage2;
+  private Texture fireImage3;
+  private Texture fireImage4;
+  private Texture fireImage5;
 
-    
-    private Texture fireImage;
-    
-    private int counter = 0;
-    private int fireCounter = 0;
+  
+  private Texture fireImage;
+  
+  private int counter = 0;
+  private int fireCounter = 0;
 	
 	public BombRenderer(SpriteBatch batch, Bomb bomb) {
 		this.bomb = bomb;
-        this.batch = batch;
-        bombImage1 = new Texture("Bomb_f01.png");
-        bombImage2 = new Texture("Bomb_f02.png");
-        bombImage3 = new Texture("Bomb_f03.png");
-        
-        bombImage = bombImage1;
-        
-        fireImage1 = new Texture("Flame_f00.png");
-        fireImage2 = new Texture("Flame_f01.png");
-        fireImage3 = new Texture("Flame_f02.png");
-        fireImage4 = new Texture("Flame_f03.png");
-        fireImage5 = new Texture("Flame_f04.png");
+    this.batch = batch;
+    bombImage1 = new Texture("Bomb_f01.png");
+    bombImage2 = new Texture("Bomb_f02.png");
+    bombImage3 = new Texture("Bomb_f03.png");
+    
+    bombImage = bombImage1;
+    
+    fireImage1 = new Texture("Flame_f00.png");
+    fireImage2 = new Texture("Flame_f01.png");
+    fireImage3 = new Texture("Flame_f02.png");
+    fireImage4 = new Texture("Flame_f03.png");
+    fireImage5 = new Texture("Flame_f04.png");
 
-        fireImage = fireImage1;
-
+    fireImage = fireImage1;
 	}
 	
 	public void render() {
@@ -68,7 +67,7 @@ public class BombRenderer {
 	        		}
 	        	
 			}     	
-	    }
+	  }
 		batch.end();
 	}
 	

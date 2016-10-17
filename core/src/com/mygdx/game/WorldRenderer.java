@@ -24,6 +24,7 @@ public class WorldRenderer {
 
     private MazeRenderer mazeRenderer;
     private BombRenderer bombRenderer;
+    private ItemRenderer itemRenderer;
 
 	public WorldRenderer(BombermanGame bombermanGame, World world) {
 		this.bombermanGame = bombermanGame;
@@ -42,11 +43,13 @@ public class WorldRenderer {
 
         mazeRenderer = new MazeRenderer(bombermanGame.batch, world.getMaze());
         bombRenderer = new BombRenderer(bombermanGame.batch, world.getBomb());
+        itemRenderer = new ItemRenderer(bombermanGame.batch, world.getItem());
 	}
 	
 	public void render (float delta) {
         mazeRenderer.render();
         bombRenderer.render();
+        itemRenderer.render();
         Vector2 pos = bomberman.getPosition();
 //        Vector2 pos2 = bomberman2.getPosition();
         
