@@ -135,7 +135,16 @@ public class Bomberman {
 	}
 
 	public void collectItem() {
-		item.collect(getRow(), getCol());
-		bombLimit++;
+
+		int r = getRow();
+		int c = getCol();
+
+		item.collect(r, c);
+		int type = item.getItemType(r, c);
+		if(type == item.POWERUP_BOMP) {
+			bombLimit++;
+		} else if (type == item.POWERUP_FRAME) {
+			bomb.increaseArea();
+		}
 	}
 }

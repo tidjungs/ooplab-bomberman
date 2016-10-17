@@ -67,21 +67,77 @@ public class Bomb {
 	public boolean canPassBomb(int row, int col) {
 		return timeBomb[row][col] > 120 || timeBomb[row][col] == 0;
 	}
+
+	public void increaseArea() {
+		BOMBAREA++;
+	}
 	
 	private void checkExplode(int row, int col) {
 		if(timeBomb[row][col] == 0) {
+			
 			world.getBomberman().receivePlantBomp();
-			for(int i=row-BOMBAREA; i<=row+BOMBAREA; i++) {
-				for(int j=col-BOMBAREA; j<=col+BOMBAREA; j++) {
-					if(i == row || j == col) {
-						world.explode(i, j);
-						if(!maze.hasWallAt(i, j)) {
-							fire[i][j] = 50;
-						}
-					}
+
+			for(int i=row; i>=row-BOMBAREA; i--) {
+				
+				if(maze.hasWallAt(i, col)) {
+					break;
+				}
+
+				fire[i][col] = 50;
+
+				if(maze.hasBoxAt(i, col)) {
+					world.explode(i, col);
+					break;
 				}
 			}
+
+			for(int i=row; i<=row+BOMBAREA; i++) {
+
+				if(maze.hasWallAt(i, col)) {
+					break;
+				}
+				
+				fire[i][col] = 50;
+
+				if(maze.hasBoxAt(i, col)) {
+					world.explode(i, col);
+					break;
+				}
+			}
+
+			for(int j=col; j>=col-BOMBAREA; j--) {
+				
+				if(maze.hasWallAt(row, j)) {
+					break;
+				}
+				
+				fire[row][j] = 50;
+			
+				if(maze.hasBoxAt(row, j)) {
+					world.explode(row, j);
+					break;
+				}
+			}
+
+			for(int j=col; j<=col+BOMBAREA; j++) {
+				
+				if(maze.hasWallAt(row, j)) {
+					break;
+				}
+				
+				fire[row][j] = 50;
+
+				if(maze.hasBoxAt(row, j)) {
+					world.explode(row, j);
+					break;
+				}
+			}
+
 		}
 	}
+
+	// private boolean explodeOutMap(int row, int col) {
+	// 	return row < 0 || row >= height || col < 0 || col >= width;
+	// }
 	
 }

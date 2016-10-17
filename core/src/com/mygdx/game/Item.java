@@ -75,6 +75,11 @@ public class Item {
 		return itemState[r][c] == IS_SPAWN;
 	}
 
+	public boolean isNotSpawn(int r, int c) {
+		return itemState[r][c] == NOT_SPAWN;
+	}
+
+
 	public void collect(int r, int c) {
 		itemState[r][c] = IS_COLLECT;
 	}
