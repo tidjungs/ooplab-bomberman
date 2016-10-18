@@ -93,8 +93,7 @@ public class Bomberman {
 	private boolean canMoveInDirection(int dir) {
 		int newRow = getRow() + DIR_OFFSETS[dir][1];
 		int newCol = getCol() + DIR_OFFSETS[dir][0];
-		return !maze.hasWallAt(newRow, newCol) && bomb.canPassBomb(newRow, newCol);
-		// !maze.hasBoxAt(newRow, newCol)
+		return !maze.hasWallAt(newRow, newCol) && bomb.canPassBomb(newRow, newCol) && !maze.hasBoxAt(newRow, newCol);
 	}
 	
 	public int getRow() {
@@ -110,7 +109,7 @@ public class Bomberman {
 		int r = getRow();
 		int c = getCol();
 
-		if (canBombAgain() && !bomb.hasBombAt(r, c)) {
+		if (canBombAgain() && !bomb.hasBombAt(r, c) && isAlive()) {
 			bomb.newBomp(r, c, player);
 			bombPlant++;
 		}

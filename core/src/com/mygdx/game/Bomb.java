@@ -145,9 +145,4 @@ public class Bomb {
 		}
 	}
 
-
-	// private boolean explodeOutMap(int row, int col) {
-	// 	return row < 0 || row >= height || col < 0 || col >= width;
-	// }
-	
 }
