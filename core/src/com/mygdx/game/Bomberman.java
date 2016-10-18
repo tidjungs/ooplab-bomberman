@@ -88,7 +88,7 @@ public class Bomberman {
 	private boolean canMoveInDirection(int dir) {
 		int newRow = getRow() + DIR_OFFSETS[dir][1];
 		int newCol = getCol() + DIR_OFFSETS[dir][0];
-		return !maze.hasWallAt(newRow, newCol) && bomb.canPassBomb(newRow, newCol);
+		return !maze.hasBoxAt(newRow, newCol) && !maze.hasWallAt(newRow, newCol) && bomb.canPassBomb(newRow, newCol);
 	}
 	
 	public int getRow() {

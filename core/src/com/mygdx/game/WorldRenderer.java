@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 public class WorldRenderer {
 	
 	public static final int BLOCK_SIZE = 40;
-	private static final int DELAY_LENGTH = 4;
+	private static final int DELAY_LENGTH = 2;
 	private static final int BOMBERMAN_IMG_PER_POSITION = 8;
 	
 	private BombermanGame bombermanGame;
@@ -63,7 +63,7 @@ public class WorldRenderer {
 	public void inintialBombermanTexure(char pos, Texture [] texture) {
     for(int i=0; i<8; i++) {
     	fileName = String.format("Bman_%c_f0%d.png",pos, i);
-   		System.out.println(fileName);
+   		// System.out.println(fileName);
     	texture[i] = new Texture(Gdx.files.internal(fileName));
     }
 	}
