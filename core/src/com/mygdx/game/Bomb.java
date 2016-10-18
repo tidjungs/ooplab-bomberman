@@ -3,12 +3,14 @@ package com.mygdx.game;
 public class Bomb {
 	private int [][] timeBomb;
 	private int [][] fire;
+	private int [][] owner;
+
 	private int height;
 	private int width;
 	
 	private Maze maze;
 	
-	private int BOMBAREA = 1;
+	private int BOMBAREA;
 	private World world;
 	
 	public Bomb(Maze maze, World world) {
@@ -22,11 +24,13 @@ public class Bomb {
 	private void initialData() {
 		timeBomb = new int [height][width];
 		fire = new int [height][width];
+		owner = new int [height][width];
 		
 		for(int r=0; r < height; r++) {
 			for(int c=0; c < width; c++) {
 				timeBomb[r][c] = 0;
 				fire[r][c] = 0;
+				owner[r][c] = 0;
 			}
 		}
 	}
@@ -51,8 +55,9 @@ public class Bomb {
 		return timeBomb[row][col];
 	}
 	
-	public void newBomp(int row, int col) {
+	public void newBomp(int row, int col, int player) {
 			timeBomb[row][col] = 150;
+			owner[row][col] = player;
 	}
 	
 	public void decreaseTimeBomb(int row, int col) {
@@ -67,15 +72,19 @@ public class Bomb {
 	public boolean canPassBomb(int row, int col) {
 		return timeBomb[row][col] > 120 || timeBomb[row][col] == 0;
 	}
-
-	public void increaseArea() {
-		BOMBAREA++;
-	}
 	
 	private void checkExplode(int row, int col) {
 		if(timeBomb[row][col] == 0) {
 			
-			world.getBomberman().receivePlantBomp();
+			if(owner[row][col] == 1) {
+				world.getBomberman().receivePlantBomp();
+				BOMBAREA = world.getBomberman().getBombArea();
+			} else if (owner[row][col] == 2) {
+				world.getBomberman2().receivePlantBomp();
+				BOMBAREA = world.getBomberman2().getBombArea();
+			}
+
+			owner[row][col] = 0;
 
 			for(int i=row; i>=row-BOMBAREA; i--) {
 				
@@ -135,7 +144,7 @@ public class Bomb {
 
 		}
 	}
- 
+
 
 	// private boolean explodeOutMap(int row, int col) {
 	// 	return row < 0 || row >= height || col < 0 || col >= width;

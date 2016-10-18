@@ -14,8 +14,8 @@ public class World {
     	maze = new Maze();
     	bomb = new Bomb(maze, this);
         item = new Item(maze);
-    	bomberman = new Bomberman(60, 60, maze, bomb, item);
-    	bomberman2 = new Bomberman(700, 460, maze, bomb, item);
+    	bomberman = new Bomberman(60, 60, maze, bomb, item, 1);
+    	bomberman2 = new Bomberman(700, 460, maze, bomb, item, 2);
     }
     
     public Bomberman getBomberman() {

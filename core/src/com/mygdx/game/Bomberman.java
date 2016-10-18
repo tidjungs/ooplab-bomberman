@@ -32,14 +32,19 @@ public class Bomberman {
 	
 	private int bombLimit = 1;
 	private int bombPlant = 0;
+
+	private int bombArea = 1;
+
+	private int player;
 		
-	public Bomberman(int x, int y, Maze maze, Bomb bomb, Item item) {
+	public Bomberman(int x, int y, Maze maze, Bomb bomb, Item item, int player) {
 		position = new Vector2(x, y);
 		currentDirection = DIRECTION_STILL;
     nextDirection = DIRECTION_STILL;
     this.maze = maze;
     this.bomb = bomb;
     this.item = item;
+    this.player = player;
 	}
 	
 	public int getCurrentDirection() {
@@ -106,7 +111,7 @@ public class Bomberman {
 		int c = getCol();
 
 		if (canBombAgain() && !bomb.hasBombAt(r, c)) {
-			bomb.newBomp(r, c);
+			bomb.newBomp(r, c, player);
 			bombPlant++;
 		}
 	}
@@ -135,6 +140,10 @@ public class Bomberman {
 		return item.isSpawn(getRow(), getCol());
 	}
 
+	public int getBombArea() {
+		return bombArea;
+	}
+
 	public void collectItem() {
 
 		int r = getRow();
@@ -145,7 +154,7 @@ public class Bomberman {
 		if(type == item.POWERUP_BOMP) {
 			bombLimit++;
 		} else if (type == item.POWERUP_FRAME) {
-			bomb.increaseArea();
+			bombArea++;
 		}
 	}
 }
