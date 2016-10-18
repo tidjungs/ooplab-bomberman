@@ -19,7 +19,7 @@ public class Bomberman {
 		{-1, 0}
 	};
 	
-	public static final int SPEED = 5;
+	public static final double SPEED = 2.5;
 	
 	private int currentDirection;
 	private int nextDirection;
@@ -88,7 +88,7 @@ public class Bomberman {
 	private boolean canMoveInDirection(int dir) {
 		int newRow = getRow() + DIR_OFFSETS[dir][1];
 		int newCol = getCol() + DIR_OFFSETS[dir][0];
-		return !maze.hasWallAt(newRow, newCol) && !maze.hasBoxAt(newRow, newCol) && bomb.canPassBomb(newRow, newCol);
+		return !maze.hasWallAt(newRow, newCol) && bomb.canPassBomb(newRow, newCol);
 	}
 	
 	public int getRow() {
