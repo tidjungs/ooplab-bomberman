@@ -3,7 +3,7 @@ package com.mygdx.game;
 public class Maze {
 	private String[] MAP = new String [] {
 	            "###################",
-	            "#...XXXXXXXXXXX...#",
+	            "#...XXXXXXXXXXX..P#",
 	            "#.#X#X#X#X#X#X#X#.#",
 	            "#.XXXXXXXXXXXXXXX.#",
 	            "#X#X#X#X#X#X#X#X#X#",
@@ -13,7 +13,7 @@ public class Maze {
 	            "#X#X#X#X#X#X#X#X#X#",
 	            "#.XXXXXXXXXXXXXXX.#",
 	            "#.#X#X#X#X#X#X#X#.#",
-	            "#...XXXXXXXXXXX...#",
+	            "#P..XXXXXXXXXXX...#",
 	            "###################"    
 	};
 	
@@ -49,6 +49,10 @@ public class Maze {
 	
 	public boolean hasWallAt(int r, int c) {
 		return MAP[r].charAt(c) == '#';
+	}
+
+	public boolean hasPortalAt(int r, int c) {
+		return MAP[r].charAt(c) == 'P';
 	}
 	
 	public boolean hasBoxAt(int r, int c) {

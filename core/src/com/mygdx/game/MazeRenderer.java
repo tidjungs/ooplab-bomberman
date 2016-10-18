@@ -9,7 +9,7 @@ public class MazeRenderer {
     private Texture wallImage;
     private Texture glassImage;
     private Texture boxImage;
-
+    private Texture portalImage;
 
     public MazeRenderer(SpriteBatch batch, Maze maze) {
         this.maze = maze;
@@ -18,6 +18,7 @@ public class MazeRenderer {
         wallImage = new Texture("SolidBlock.png");
         glassImage = new Texture("glass.png");
         boxImage = new Texture("ExplodableBlock.png");
+        portalImage = new Texture("Portal.png");
     }
     
     public void render() {
@@ -34,7 +35,10 @@ public class MazeRenderer {
                     batch.draw(wallImage, x, y);
         		} else if (maze.hasBoxAt(r, c)) {
                     batch.draw(boxImage, x, y);
-        		} else {
+        		} else if (maze.hasPortalAt(r, c)) {
+                    batch.draw(glassImage, x, y);
+                    batch.draw(portalImage, x, y);
+                } else {
                     batch.draw(glassImage, x, y);
         		}
         		
