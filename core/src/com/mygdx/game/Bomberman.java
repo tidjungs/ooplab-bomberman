@@ -88,16 +88,17 @@ public class Bomberman {
 	private boolean canMoveInDirection(int dir) {
 		int newRow = getRow() + DIR_OFFSETS[dir][1];
 		int newCol = getCol() + DIR_OFFSETS[dir][0];
-		return !maze.hasBoxAt(newRow, newCol) && !maze.hasWallAt(newRow, newCol) && bomb.canPassBomb(newRow, newCol);
+		return !maze.hasWallAt(newRow, newCol) && bomb.canPassBomb(newRow, newCol);
+		// !maze.hasBoxAt(newRow, newCol)
 	}
 	
 	public int getRow() {
-        return ((int)position.y) / WorldRenderer.BLOCK_SIZE; 
+    return ((int)position.y) / WorldRenderer.BLOCK_SIZE; 
 	}
 	
 	public int getCol() {
-        return ((int)position.x) / WorldRenderer.BLOCK_SIZE; 
-    }
+    return ((int)position.x) / WorldRenderer.BLOCK_SIZE; 
+  }
 	
 	public void plantBomp() {
 
