@@ -17,6 +17,8 @@ public class WorldRenderer {
 	private SpriteBatch batch;
 
 	private BombermanRenderer bombermanRenderer;
+	private BombermanRenderer bombermanRenderer2;
+
   private MazeRenderer mazeRenderer;
   private BombRenderer bombRenderer;
   private ItemRenderer itemRenderer;
@@ -27,6 +29,8 @@ public class WorldRenderer {
     this.world = world; 
 
 		bombermanRenderer = new BombermanRenderer(bombermanGame.batch, world.getBomberman());
+		bombermanRenderer2 = new BombermanRenderer(bombermanGame.batch, world.getBomberman2());
+
     mazeRenderer = new MazeRenderer(bombermanGame.batch, world.getMaze());
     bombRenderer = new BombRenderer(bombermanGame.batch, world.getBomb());
     itemRenderer = new ItemRenderer(bombermanGame.batch, world.getItem());
@@ -36,7 +40,9 @@ public class WorldRenderer {
     mazeRenderer.render();
     bombRenderer.render();
     itemRenderer.render();
+
     bombermanRenderer.render();
+    bombermanRenderer2.render();
 
 	}
 

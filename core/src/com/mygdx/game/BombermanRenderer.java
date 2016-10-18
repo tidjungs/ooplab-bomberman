@@ -94,7 +94,7 @@ public class BombermanRenderer {
 	}
 
 	private boolean movingDelayIsMaximun() {
-		return movingDelay == BOMBERMAN_IMG_PER_POSITION * DELAY_LENGTH;
+		return movingDelay > BOMBERMAN_IMG_PER_POSITION * DELAY_LENGTH;
 	}
 
 	public void render () {
