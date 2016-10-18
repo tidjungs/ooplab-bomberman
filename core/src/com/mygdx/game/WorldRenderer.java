@@ -48,8 +48,8 @@ public class WorldRenderer {
 	
 	public void render (float delta) {
     mazeRenderer.render();
-    itemRenderer.render();
     bombRenderer.render();
+    itemRenderer.render();
     Vector2 pos = bomberman.getPosition();
 //        Vector2 pos2 = bomberman2.getPosition();
     
@@ -69,19 +69,16 @@ public class WorldRenderer {
 	
 	public void renderBombermanByDirection() {
 
-		switch(bomberman.getCurrentDirection()) {
-			case 1:
-				bombermanImg = bombermanBackImg;
-				break;
-			case 2:
-				bombermanImg = bombermanRightImg;
-				break;
-			case 3:
-				bombermanImg = bombermanFrontImg;
-				break;
-			case 4:
-				bombermanImg = bombermanLeftImg;
-				break;				
+		int dir = bomberman.getCurrentDirection();
+
+		if(dir == bomberman.DIRECTION_UP) {
+			bombermanImg = bombermanBackImg;
+		} else if (dir == bomberman.DIRECTION_RIGHT) {
+			bombermanImg = bombermanRightImg;
+		} else if (dir == bomberman.DIRECTION_DOWN) {
+			bombermanImg = bombermanFrontImg;
+		} else if (dir == bomberman.DIRECTION_LEFT) {
+			bombermanImg = bombermanLeftImg;
 		}
 	}
 }

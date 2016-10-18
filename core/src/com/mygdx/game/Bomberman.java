@@ -67,16 +67,16 @@ public class Bomberman {
 		if(isTouchingItem()) {
 			collectItem();
 		}
-		
+
 		if (isAtCenter()) {
 			if(canMoveInDirection(nextDirection)) {
-	            currentDirection = nextDirection;
+	      currentDirection = nextDirection;
 			} else {
-	            currentDirection = DIRECTION_STILL;
+	      currentDirection = DIRECTION_STILL;
 			}
 		}
-        position.x += SPEED * DIR_OFFSETS[currentDirection][0];
-        position.y += SPEED * DIR_OFFSETS[currentDirection][1];
+
+		move(currentDirection);
 	}
 	
 	public boolean isAtCenter() {
