@@ -18,6 +18,11 @@ public class WorldRenderer {
 
 	private BombermanRenderer bombermanRenderer;
 	private BombermanRenderer bombermanRenderer2;
+	private BombermanRenderer bombermanRenderer3;
+	private BombermanRenderer bombermanRenderer4;
+
+
+	private CreepRenderer creepRenderer;
 
   private MazeRenderer mazeRenderer;
   private BombRenderer bombRenderer;
@@ -30,6 +35,10 @@ public class WorldRenderer {
 
 		bombermanRenderer = new BombermanRenderer(bombermanGame.batch, world.getBomberman());
 		bombermanRenderer2 = new BombermanRenderer(bombermanGame.batch, world.getBomberman2());
+		bombermanRenderer3 = new BombermanRenderer(bombermanGame.batch, world.getBomberman3());
+		bombermanRenderer4 = new BombermanRenderer(bombermanGame.batch, world.getBomberman4());
+
+		// creepRenderer = new CreepRenderer(bombermanGame.batch, world.getCreep());
 
     mazeRenderer = new MazeRenderer(bombermanGame.batch, world.getMaze());
     bombRenderer = new BombRenderer(bombermanGame.batch, world.getBomb());
@@ -40,10 +49,12 @@ public class WorldRenderer {
     mazeRenderer.render();
     bombRenderer.render();
     itemRenderer.render();
+    // creepRenderer.render();
 
     bombermanRenderer.render();
     bombermanRenderer2.render();
-
+    bombermanRenderer3.render();
+	  bombermanRenderer4.render();
 	}
 
 

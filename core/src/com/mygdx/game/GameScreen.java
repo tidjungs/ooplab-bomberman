@@ -12,6 +12,8 @@ public class GameScreen extends ScreenAdapter {
 	private Texture bombermanImg;
 	private Bomberman bomberman;
 	private Bomberman bomberman2;
+	private Bomberman bomberman3;
+	private Bomberman bomberman4;
 
 	private Bomb bomb;
 	World world;
@@ -23,6 +25,9 @@ public class GameScreen extends ScreenAdapter {
     worldRenderer = new WorldRenderer(bombermanGame, world);
     bomberman = world.getBomberman();
     bomberman2 = world.getBomberman2();
+    bomberman3 = world.getBomberman3();
+    bomberman4 = world.getBomberman4();
+
     bomb = world.getBomb();
 	}
 	
@@ -40,39 +45,71 @@ public class GameScreen extends ScreenAdapter {
 	}
 	
 	private void updateBomberManActivity() {
-		if (Gdx.input.isKeyPressed(Keys.SPACE)) {
+		if (Gdx.input.isKeyPressed(Keys.V)) {
 			bomberman.plantBomp();
 		}
 		
-		if (Gdx.input.isKeyPressed(Keys.B)) {
+		if (Gdx.input.isKeyPressed(Keys.M)) {
 			bomberman2.plantBomp();	
+		}
+
+		if (Gdx.input.isKeyPressed(Keys.ENTER)) {
+			bomberman3.plantBomp();	
+		}
+
+		if (Gdx.input.isKeyPressed(Keys.NUMPAD_0 )) {
+			bomberman4.plantBomp();	
 		}
 	}
 	
 	private void updateBombermanDirection() {
-		if (Gdx.input.isKeyPressed(Keys.UP)) {
+		if (Gdx.input.isKeyPressed(Keys.W)) {
 			bomberman.setNextDirection(Bomberman.DIRECTION_UP);
-		} else if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
+		} else if (Gdx.input.isKeyPressed(Keys.D)) {
 			bomberman.setNextDirection(Bomberman.DIRECTION_RIGHT);
-		} else if (Gdx.input.isKeyPressed(Keys.DOWN)) {
+		} else if (Gdx.input.isKeyPressed(Keys.S)) {
 			bomberman.setNextDirection(Bomberman.DIRECTION_DOWN);
-		} else if (Gdx.input.isKeyPressed(Keys.LEFT)) {
+		} else if (Gdx.input.isKeyPressed(Keys.A)) {
 			bomberman.setNextDirection(Bomberman.DIRECTION_LEFT);
 		} else {
 			bomberman.setNextDirection(Bomberman.DIRECTION_STILL);
 		} 
 		
-		if (Gdx.input.isKeyPressed(Keys.W)) {
+		if (Gdx.input.isKeyPressed(Keys.Y)) {
 			bomberman2.setNextDirection(Bomberman.DIRECTION_UP);
-		} else if (Gdx.input.isKeyPressed(Keys.D)) {
+		} else if (Gdx.input.isKeyPressed(Keys.J)) {
 			bomberman2.setNextDirection(Bomberman.DIRECTION_RIGHT);
-		} else if (Gdx.input.isKeyPressed(Keys.S)) {
+		} else if (Gdx.input.isKeyPressed(Keys.H)) {
 			bomberman2.setNextDirection(Bomberman.DIRECTION_DOWN);
-		} else if (Gdx.input.isKeyPressed(Keys.A)) {
+		} else if (Gdx.input.isKeyPressed(Keys.G)) {
 			bomberman2.setNextDirection(Bomberman.DIRECTION_LEFT);
 		} else {
 			bomberman2.setNextDirection(Bomberman.DIRECTION_STILL);
-		} 
+		}
+
+		if (Gdx.input.isKeyPressed(Keys.O)) {
+			bomberman3.setNextDirection(Bomberman.DIRECTION_UP);
+		} else if (Gdx.input.isKeyPressed(Keys.SEMICOLON )) {
+			bomberman3.setNextDirection(Bomberman.DIRECTION_RIGHT);
+		} else if (Gdx.input.isKeyPressed(Keys.L)) {
+			bomberman3.setNextDirection(Bomberman.DIRECTION_DOWN);
+		} else if (Gdx.input.isKeyPressed(Keys.K)) {
+			bomberman3.setNextDirection(Bomberman.DIRECTION_LEFT);
+		} else {
+			bomberman3.setNextDirection(Bomberman.DIRECTION_STILL);
+		}
+
+		if (Gdx.input.isKeyPressed(Keys.UP)) {
+			bomberman4.setNextDirection(Bomberman.DIRECTION_UP);
+		} else if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
+			bomberman4.setNextDirection(Bomberman.DIRECTION_RIGHT);
+		} else if (Gdx.input.isKeyPressed(Keys.DOWN)) {
+			bomberman4.setNextDirection(Bomberman.DIRECTION_DOWN);
+		} else if (Gdx.input.isKeyPressed(Keys.LEFT)) {
+			bomberman4.setNextDirection(Bomberman.DIRECTION_LEFT);
+		} else {
+			bomberman4.setNextDirection(Bomberman.DIRECTION_STILL);
+		}   
 		
 	}
 	

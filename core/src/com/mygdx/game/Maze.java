@@ -3,19 +3,34 @@ package com.mygdx.game;
 public class Maze {
 	private String[] MAP = new String [] {
 	            "###################",
-	            "#...XXXXXXXXXXX..P#",
+	            "#...XXXXXXXXXXX...#",
 	            "#.#X#X#X#X#X#X#X#.#",
 	            "#.XXXXXXXXXXXXXXX.#",
-	            "#X#X#X#X#X#X#X#X#X#",
-	            "#XXXXXXXXXXXXXXXXX#",
-	            "#X#X#X#X#X#X#X#X#X#",
-	            "#XXXXXXXXXXXXXXXXX#",
-	            "#X#X#X#X#X#X#X#X#X#",
+	            "#X#X#X#X#.#X#X#X#X#",
+	            "#XXXXXXXX.XXXXXXXX#",
+	            "#X#X#X#X#.#X#X#X#X#",
+	            "#XXXXXXXX.XXXXXXXX#",
+	            "#X#X#X#X#.#X#X#X#X#",
 	            "#.XXXXXXXXXXXXXXX.#",
 	            "#.#X#X#X#X#X#X#X#.#",
-	            "#P..XXXXXXXXXXX...#",
+	            "#...XXXXXXXXXXX...#",
 	            "###################"    
 	};
+	// private String[] MAP = new String [] {
+	//             "###################",
+	//             "#.................#",
+	//             "#.#.#.#.#.#.#.#.#.#",
+	//             "#.................#",
+	//             "#.#.#.#.#.#.#.#.#.#",
+	//             "#.................#",
+	//             "#.#.#.#.#.#.#.#.#.#",
+	//             "#.................#",
+	//             "#.#.#.#.#.#.#.#.#.#",
+	//             "#.................#",
+	//             "#.#.#.#.#.#.#.#.#.#",
+	//             "#.................#",
+	//             "###################"    
+	// };
 	
 	private boolean [][] Box;
 	
@@ -38,6 +53,14 @@ public class Maze {
 			}
 		}
 	}
+
+	// private boolean canBoxSpawn(int r, int c) {
+	// 	return !hasWallAt(r, c) && 
+	// }
+
+	// private boolean bombermanSpawnPoint(int r, int c) {
+	// 	for(int i)
+	// }
 	
 	public int getHeight() {
 		return height;

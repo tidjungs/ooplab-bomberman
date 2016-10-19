@@ -82,6 +82,12 @@ public class Bomb {
 			} else if (owner[row][col] == 2) {
 				world.getBomberman2().receivePlantBomp();
 				BOMBAREA = world.getBomberman2().getBombArea();
+			} else if (owner[row][col] == 3) {
+				world.getBomberman3().receivePlantBomp();
+				BOMBAREA = world.getBomberman3().getBombArea();
+			} else if (owner[row][col] == 4) {
+				world.getBomberman4().receivePlantBomp();
+				BOMBAREA = world.getBomberman4().getBombArea();
 			}
 
 			owner[row][col] = 0;
