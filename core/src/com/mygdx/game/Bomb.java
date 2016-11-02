@@ -27,14 +27,12 @@ public class Bomb {
 		timeBomb = new int [height][width];
 		fire = new int [height][width];
 		owner = new int [height][width];
-		fireTagetField = new boolean [height][width];
 		
 		for(int r=0; r < height; r++) {
 			for(int c=0; c < width; c++) {
 				timeBomb[r][c] = 0;
 				fire[r][c] = 0;
 				owner[r][c] = 0;
-				fireTagetField = false;
 			}
 		}
 	}
