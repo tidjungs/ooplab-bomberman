@@ -27,12 +27,14 @@ public class Bomb {
 		timeBomb = new int [height][width];
 		fire = new int [height][width];
 		owner = new int [height][width];
+		fireTagetField = new boolean [height][width];
 		
 		for(int r=0; r < height; r++) {
 			for(int c=0; c < width; c++) {
 				timeBomb[r][c] = 0;
 				fire[r][c] = 0;
 				owner[r][c] = 0;
+				fireTagetField = false;
 			}
 		}
 	}
@@ -90,6 +92,64 @@ public class Bomb {
 		}
 	}
 
+	private void setFireTarget(int row, int col) {
+		for(int i=row; i>=row-bombArea; i--) {
+			
+			if(maze.hasWallAt(i, col)) {
+				break;
+			}
+
+			fire[i][col] = FRAME_TIME;
+
+			if(maze.hasBoxAt(i, col)) {
+				world.explode(i, col);
+				break;
+			}
+		}
+
+		for(int i=row; i<=row+bombArea; i++) {
+
+			if(maze.hasWallAt(i, col)) {
+				break;
+			}
+
+			fire[i][col] = FRAME_TIME;
+
+			if(maze.hasBoxAt(i, col)) {
+				world.explode(i, col);
+				break;
+			}
+		}
+
+		for(int j=col; j>=col-bombArea; j--) {
+			
+			if(maze.hasWallAt(row, j)) {
+				break;
+			}
+			
+			fire[row][j] = FRAME_TIME;
+		
+			if(maze.hasBoxAt(row, j)) {
+				world.explode(row, j);
+				break;
+			}
+		}
+
+		for(int j=col; j<=col+bombArea; j++) {
+			
+			if(maze.hasWallAt(row, j)) {
+				break;
+			}
+			
+			fire[row][j] = FRAME_TIME;
+
+			if(maze.hasBoxAt(row, j)) {
+				world.explode(row, j);
+				break;
+			}
+		}
+	}
+
 	private void checkExplode(int row, int col) {
 		if(timeBomb[row][col] == 0) {
 			
@@ -97,64 +157,7 @@ public class Bomb {
 			bomberman.receivePlantBomp();
 			bombArea = bomberman.getBombArea();
 			owner[row][col] = 0;
-
-
-
-			for(int i=row; i>=row-bombArea; i--) {
-				
-				if(maze.hasWallAt(i, col)) {
-					break;
-				}
-
-				fire[i][col] = FRAME_TIME;
-
-				if(maze.hasBoxAt(i, col)) {
-					world.explode(i, col);
-					break;
-				}
-			}
-
-			for(int i=row; i<=row+bombArea; i++) {
-
-				if(maze.hasWallAt(i, col)) {
-					break;
-				}
-				
-				fire[i][col] = FRAME_TIME;
-
-				if(maze.hasBoxAt(i, col)) {
-					world.explode(i, col);
-					break;
-				}
-			}
-
-			for(int j=col; j>=col-bombArea; j--) {
-				
-				if(maze.hasWallAt(row, j)) {
-					break;
-				}
-				
-				fire[row][j] = FRAME_TIME;
-			
-				if(maze.hasBoxAt(row, j)) {
-					world.explode(row, j);
-					break;
-				}
-			}
-
-			for(int j=col; j<=col+bombArea; j++) {
-				
-				if(maze.hasWallAt(row, j)) {
-					break;
-				}
-				
-				fire[row][j] = FRAME_TIME;
-
-				if(maze.hasBoxAt(row, j)) {
-					world.explode(row, j);
-					break;
-				}
-			}
+			setFireTarget(row, col);
 
 		}
 	}
