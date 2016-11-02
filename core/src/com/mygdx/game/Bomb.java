@@ -10,7 +10,7 @@ public class Bomb {
 	
 	private Maze maze;
 	
-	private int BOMBAREA;
+	private int bombArea;
 	private World world;
 	
 	public Bomb(Maze maze, World world) {
@@ -73,26 +73,30 @@ public class Bomb {
 		return timeBomb[row][col] > 120 || timeBomb[row][col] == 0;
 	}
 	
+	private Bomberman getBomberman(int index) {
+		switch(index) {
+			case 1:
+				return world.getBomberman();
+			case 2:
+				return world.getBomberman2();
+			case 3:
+				return world.getBomberman3();
+			case 4:
+				return world.getBomberman4();
+			default:
+				return null;
+		}
+	}
+
 	private void checkExplode(int row, int col) {
 		if(timeBomb[row][col] == 0) {
 			
-			if(owner[row][col] == 1) {
-				world.getBomberman().receivePlantBomp();
-				BOMBAREA = world.getBomberman().getBombArea();
-			} else if (owner[row][col] == 2) {
-				world.getBomberman2().receivePlantBomp();
-				BOMBAREA = world.getBomberman2().getBombArea();
-			} else if (owner[row][col] == 3) {
-				world.getBomberman3().receivePlantBomp();
-				BOMBAREA = world.getBomberman3().getBombArea();
-			} else if (owner[row][col] == 4) {
-				world.getBomberman4().receivePlantBomp();
-				BOMBAREA = world.getBomberman4().getBombArea();
-			}
-
+			Bomberman bomberman = getBomberman(owner[row][col]);
+			bomberman.receivePlantBomp();
+			bombArea = bomberman.getBombArea();
 			owner[row][col] = 0;
 
-			for(int i=row; i>=row-BOMBAREA; i--) {
+			for(int i=row; i>=row-bombArea; i--) {
 				
 				if(maze.hasWallAt(i, col)) {
 					break;
@@ -106,7 +110,7 @@ public class Bomb {
 				}
 			}
 
-			for(int i=row; i<=row+BOMBAREA; i++) {
+			for(int i=row; i<=row+bombArea; i++) {
 
 				if(maze.hasWallAt(i, col)) {
 					break;
@@ -120,7 +124,7 @@ public class Bomb {
 				}
 			}
 
-			for(int j=col; j>=col-BOMBAREA; j--) {
+			for(int j=col; j>=col-bombArea; j--) {
 				
 				if(maze.hasWallAt(row, j)) {
 					break;
@@ -134,7 +138,7 @@ public class Bomb {
 				}
 			}
 
-			for(int j=col; j<=col+BOMBAREA; j++) {
+			for(int j=col; j<=col+bombArea; j++) {
 				
 				if(maze.hasWallAt(row, j)) {
 					break;
