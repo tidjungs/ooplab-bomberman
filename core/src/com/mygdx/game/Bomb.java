@@ -1,6 +1,8 @@
 package com.mygdx.game;
 
 public class Bomb {
+	private static final int FRAME_TIME = 50;
+
 	private int [][] timeBomb;
 	private int [][] fire;
 	private int [][] owner;
@@ -96,13 +98,15 @@ public class Bomb {
 			bombArea = bomberman.getBombArea();
 			owner[row][col] = 0;
 
+
+
 			for(int i=row; i>=row-bombArea; i--) {
 				
 				if(maze.hasWallAt(i, col)) {
 					break;
 				}
 
-				fire[i][col] = 50;
+				fire[i][col] = FRAME_TIME;
 
 				if(maze.hasBoxAt(i, col)) {
 					world.explode(i, col);
@@ -116,7 +120,7 @@ public class Bomb {
 					break;
 				}
 				
-				fire[i][col] = 50;
+				fire[i][col] = FRAME_TIME;
 
 				if(maze.hasBoxAt(i, col)) {
 					world.explode(i, col);
@@ -130,7 +134,7 @@ public class Bomb {
 					break;
 				}
 				
-				fire[row][j] = 50;
+				fire[row][j] = FRAME_TIME;
 			
 				if(maze.hasBoxAt(row, j)) {
 					world.explode(row, j);
@@ -144,7 +148,7 @@ public class Bomb {
 					break;
 				}
 				
-				fire[row][j] = 50;
+				fire[row][j] = FRAME_TIME;
 
 				if(maze.hasBoxAt(row, j)) {
 					world.explode(row, j);
