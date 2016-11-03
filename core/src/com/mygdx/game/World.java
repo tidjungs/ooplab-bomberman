@@ -74,6 +74,8 @@ public class World {
         if(bomberman4.isAlive()) {
             bomberman4.update();
         }
+
+        bomb.update();
     }
     
     public void explode(int r, int c) {

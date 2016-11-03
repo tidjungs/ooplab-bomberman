@@ -28,8 +28,8 @@ public class Bomb {
 		fire = new int [height][width];
 		owner = new int [height][width];
 		
-		for(int r=0; r < height; r++) {
-			for(int c=0; c < width; c++) {
+		for (int r=0; r < height; r++) {
+			for (int c=0; c < width; c++) {
 				timeBomb[r][c] = 0;
 				fire[r][c] = 0;
 				owner[r][c] = 0;
@@ -62,12 +62,12 @@ public class Bomb {
 			owner[row][col] = player;
 	}
 	
-	public void decreaseTimeBomb(int row, int col) {
+	private void decreaseTimeBomb(int row, int col) {
 		timeBomb[row][col]--;
 		checkExplode(row, col);
 	}
 	
-	public void decreaseFire(int row, int col) {
+	private void decreaseFire(int row, int col) {
 		fire[row][col]--;
 	}
 	
@@ -158,6 +158,24 @@ public class Bomb {
 			setFireTarget(row, col);
 
 		}
+	}
+
+	public void update() {
+			
+		for (int r=0; r < height; r++) {
+			for (int c=0; c < width; c++) {
+				
+				if (hasBombAt(r, c)) {
+					decreaseTimeBomb(r, c);
+				}
+
+				if (hasFireAt(r, c)) {
+					decreaseFire(r, c);
+				}
+				
+			}
+		}
+
 	}
 
 }

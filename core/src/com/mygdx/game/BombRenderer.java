@@ -52,22 +52,17 @@ public class BombRenderer {
 		for(int r=0; r < bomb.getHeight(); r++) {
 			for(int c=0; c < bomb.getWidth(); c++) {
 	        		
-	        		int x = c * WorldRenderer.BLOCK_SIZE;
-	        		int y = BombermanGame.HEIGHT - (r * WorldRenderer.BLOCK_SIZE) - WorldRenderer.BLOCK_SIZE;
-	        		
-	        		if (bomb.hasBombAt(r, c)) {
-	        			
-	                    batch.draw(bombImage, x, y);
-	                    bomb.decreaseTimeBomb(r, c);
-	                   
-	        		}
-	        		
-	        		if(bomb.hasFireAt(r, c)) {
-	        			changFireImage();
-	                    batch.draw(fireImage, x, y);
-	                    bomb.decreaseFire(r, c);
-	                    
-	        		}
+    		int x = c * WorldRenderer.BLOCK_SIZE;
+    		int y = BombermanGame.HEIGHT - (r * WorldRenderer.BLOCK_SIZE) - WorldRenderer.BLOCK_SIZE;
+    		
+    		if (bomb.hasBombAt(r, c)) {
+        	batch.draw(bombImage, x, y);
+    		}
+  
+    		if (bomb.hasFireAt(r, c)) {
+    			changFireImage();
+          batch.draw(fireImage, x, y);
+    		}
 	        	
 			}     	
 	  }
@@ -96,7 +91,7 @@ public class BombRenderer {
 	
 	public void changeBombImage() {
 
-		if(counter == BOMB_RENDER_RATE*0) {
+		if (counter == BOMB_RENDER_RATE*0) {
 			bombImage = bombImage1;
 		} else if (counter == BOMB_RENDER_RATE*1) {
 			bombImage = bombImage2;
@@ -104,7 +99,7 @@ public class BombRenderer {
 			bombImage = bombImage3;
 		}
 		
-		if(++counter >= BOMB_RENDER_RATE*3) {
+		if (++counter >= BOMB_RENDER_RATE*3) {
 			counter = 0;
 		}
 
