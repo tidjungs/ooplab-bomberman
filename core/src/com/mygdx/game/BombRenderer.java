@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class BombRenderer {
 	
+	private static final int FLAME_RENDER_RATE = 8;
+
 	private Bomb bomb;
   private SpriteBatch batch;
   private Texture bombImage1;
@@ -24,7 +26,7 @@ public class BombRenderer {
   
   private int counter = 0;
   private int fireCounter = 0;
-	
+
 	public BombRenderer(SpriteBatch batch, Bomb bomb) {
 		this.bomb = bomb;
     this.batch = batch;
@@ -72,19 +74,26 @@ public class BombRenderer {
 	}
 	
 	public void changFireImage() {
-		if(fireCounter == 2) {
-			fireImage = fireImage2;
-		} else if (fireCounter == 4) {
-			fireImage = fireImage3;
-		} else if (fireCounter == 6) {
-			fireImage = fireImage4;
-		} else if (fireCounter == 8) {
-			fireImage = fireImage5;
-		} else {
+
+		switch(fireCounter) {
+			case FLAME_RENDER_RATE*0 :
+				fireImage = fireImage1;
+				break;
+		}
+
+		if(fireCounter == FLAME_RENDER_RATE*0) {
 			fireImage = fireImage1;
+		} else if (fireCounter == FLAME_RENDER_RATE*1) {
+			fireImage = fireImage2;
+		} else if (fireCounter == FLAME_RENDER_RATE*2) {
+			fireImage = fireImage3;
+		} else if (fireCounter == FLAME_RENDER_RATE*3) {
+			fireImage = fireImage4;
+		} else if (fireCounter == FLAME_RENDER_RATE*4) {
+			fireImage = fireImage5;
 		}
 		
-		if(fireCounter++ >= 10) {
+		if(++fireCounter >= FLAME_RENDER_RATE*5) {
 			fireCounter = 0;
 		}
 	}

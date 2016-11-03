@@ -103,6 +103,8 @@ public class BombermanRenderer {
 
     if(bomberman.isAlive()) {
     	renderBombermanByDirection();
+    	GL20 gl = Gdx.gl;
+    	Gdx.gl.glClearColor(1.000f, 0.980f, 0.941f, 1);
 			batch.draw(bombermanImg, pos.x - WorldRenderer.BLOCK_SIZE/2, BombermanGame.HEIGHT - pos.y - WorldRenderer.BLOCK_SIZE/2);
     }
 

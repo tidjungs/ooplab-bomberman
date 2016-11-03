@@ -85,9 +85,9 @@ public class Bomberman {
 	}
 	
 	public boolean isAtCenter() {
-        int blockSize = WorldRenderer.BLOCK_SIZE;
-        return ((((int)position.x - blockSize/2) % blockSize) == 0) &&
-                ((((int)position.y - blockSize/2) % blockSize) == 0);
+    int blockSize = WorldRenderer.BLOCK_SIZE;
+    return ((((int)position.x - blockSize/2) % blockSize) == 0) &&
+            ((((int)position.y - blockSize/2) % blockSize) == 0);
 	}
 	
 	private boolean canMoveInDirection(int dir) {
