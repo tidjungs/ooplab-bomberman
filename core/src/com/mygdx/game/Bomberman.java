@@ -72,10 +72,11 @@ public class Bomberman {
 	}
 	
 	public void update() {
-		
-		if(isTouchingFire()) {
+		// check dead //
+		if(isTouchingFire() || (maze.hasBoxAt(getRow(), getCol()) && !ghostWalk)) {
 			die();
 		}
+
 		if(isTouchingItem()) {
 			collectItem();
 		}
@@ -97,7 +98,7 @@ public class Bomberman {
 			}
 		}
 
-		
+
 	}
 	
 	public boolean isAtCenter() {
