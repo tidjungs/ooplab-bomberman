@@ -10,6 +10,7 @@ public class Bomberman {
 	public static final int DIRECTION_DOWN = 3;
 	public static final int DIRECTION_LEFT = 4;
 	public static final int DIRECTION_STILL = 0;
+	public static final int GHOST_WALK_LIMIT_TIME = 1000;
 	
 	private static final int [][] DIR_OFFSETS = new int [][] {
 		{0, 0},
@@ -19,8 +20,8 @@ public class Bomberman {
 		{-1, 0}
 	};
 	
-	public static final double SPEED = 2.5;
-	
+	private static final double SPEED = 2.5;
+
 	private int currentDirection;
 	private int nextDirection;
 		
@@ -29,7 +30,9 @@ public class Bomberman {
 	private Item item;
 	
 	private boolean alive = true;
-	
+	private boolean ghostWalk = false;
+	private int ghostWalkTime = 0;
+
 	private int bombLimit = 1;
 	private int bombPlant = 0;
 
@@ -53,6 +56,10 @@ public class Bomberman {
 	
 	public Vector2 getPosition() {
 		return position;
+	}
+
+	public int getGhostWalkTimeLeft() {
+		return ghostWalkTime;
 	}
 	
 	public void move(int dir) {
@@ -82,6 +89,12 @@ public class Bomberman {
 		}
 
 		move(currentDirection);
+
+		if (ghostWalk) {
+			if (--ghostWalkTime <= 0) {
+				ghostWalk = false;
+			}
+		}
 	}
 	
 	public boolean isAtCenter() {
@@ -93,7 +106,7 @@ public class Bomberman {
 	private boolean canMoveInDirection(int dir) {
 		int newRow = getRow() + DIR_OFFSETS[dir][1];
 		int newCol = getCol() + DIR_OFFSETS[dir][0];
-		return !maze.hasWallAt(newRow, newCol) && bomb.canPassBomb(newRow, newCol) && !maze.hasBoxAt(newRow, newCol);
+		return !maze.hasWallAt(newRow, newCol) && bomb.canPassBomb(newRow, newCol) && (!maze.hasBoxAt(newRow, newCol) || ghostWalk);
 	}
 	
 	public int getRow() {
@@ -154,10 +167,13 @@ public class Bomberman {
 
 		item.collect(r, c);
 		int type = item.getItemType(r, c);
-		if(type == item.POWERUP_BOMP) {
+		if (type == item.POWERUP_BOMP) {
 			bombLimit++;
 		} else if (type == item.POWERUP_FRAME) {
 			bombArea++;
+		} else if (type == item.POWERUP_SPEED) {
+			ghostWalk = true;
+			ghostWalkTime = GHOST_WALK_LIMIT_TIME;
 		}
 	}
 }

@@ -11,6 +11,7 @@ public class ItemRenderer {
 
   private Texture pwbImage;
   private Texture pwfImage;
+  private Texture pwsImage;
 
 	public ItemRenderer(SpriteBatch batch, Item item) {
 		this.batch = batch;
@@ -18,6 +19,7 @@ public class ItemRenderer {
 
 		pwbImage = new Texture("BombPowerup.png");
 		pwfImage = new Texture("FlamePowerup.png");
+		pwsImage = new Texture("SpeedPowerup.png");
 	}
 
 	public void render() {
@@ -28,12 +30,14 @@ public class ItemRenderer {
 	        		int x = c * WorldRenderer.BLOCK_SIZE + 6;
 	        		int y = BombermanGame.HEIGHT - (r * WorldRenderer.BLOCK_SIZE) - WorldRenderer.BLOCK_SIZE + 6;
 	        		
-	        		if (item.isSpawn(r, c)) {
+	        		if (item.isSpawn(r, c) || item.isNotSpawn(r,c)) {
 	     	        int type = item.getItemType(r, c);
-	        			if(type == item.POWERUP_BOMP) {
+	        			if (type == item.POWERUP_BOMP) {
 	        				batch.draw(pwbImage, x, y);
 	        			} else if (type == item.POWERUP_FRAME) {
 	        				batch.draw(pwfImage, x, y);
+	        			} else if (type == item.POWERUP_SPEED) {
+	        				batch.draw(pwsImage, x, y);
 	        			}
 	        		}
 			}     	

@@ -16,9 +16,12 @@ public class Item {
 
 	private static final int NUMBER_OF_POWERUP_BOMP= 20;
 	private static final int NUMBER_OF_POWERUP_FRAME= 20;
+	private static final int NUMBER_OF_POWERUP_SPEED= 20;
+
 
 	public static final int POWERUP_BOMP= 11;
 	public static final int POWERUP_FRAME= 12;
+	public static final int POWERUP_SPEED= 13;
 
 	public Item(Maze maze) {
 		this.maze = maze;
@@ -30,7 +33,7 @@ public class Item {
 
 		randomSpawnPoint(NUMBER_OF_POWERUP_BOMP, POWERUP_BOMP);
 		randomSpawnPoint(NUMBER_OF_POWERUP_FRAME, POWERUP_FRAME);
-
+		randomSpawnPoint(NUMBER_OF_POWERUP_SPEED, POWERUP_SPEED);
 	}
 
 	public int getWidth() {
@@ -68,7 +71,7 @@ public class Item {
 	}
 
 	public boolean hasItemAt(int r, int c) {
-		return itemType[r][c] == POWERUP_BOMP|| itemType[r][c] == POWERUP_FRAME;
+		return itemType[r][c] == POWERUP_BOMP || itemType[r][c] == POWERUP_FRAME  || itemType[r][c] == POWERUP_SPEED;
 	}
 
 	public boolean isSpawn(int r, int c) {
