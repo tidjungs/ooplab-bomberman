@@ -126,7 +126,7 @@ public class Bomberman {
 		int r = getRow();
 		int c = getCol();
 
-		if (canBombAgain() && !bomb.hasBombAt(r, c) && isAlive()) {
+		if (canBombAgain() && !bomb.hasBombAt(r, c) && isAlive() && !maze.hasBoxAt(getRow(), getCol())) {
 			bomb.newBomp(r, c, player);
 			bombPlant++;
 		}
