@@ -10,6 +10,8 @@ public class BombermanRenderer {
 
 	private static final int DELAY_LENGTH = 2;
 	private static final int BOMBERMAN_IMG_PER_POSITION = 8;
+	// private static final int DEAD_RENDER_DELAY_LENGTH = 500;
+
 
 	private SpriteBatch batch;
 	private Bomberman bomberman;
@@ -19,10 +21,12 @@ public class BombermanRenderer {
 	private Texture [] bombermanLeftImg;
 	private Texture [] bombermanRightImg;
 	private Texture bombermanImg;
+	private Texture bombermanDeadImg;
 
 	private int lastDirection;
   private int currentDirection;
   private int movingDelay = 0;
+  // private int deadRenderDelay = 0;
 
   private String fileName;
 
@@ -43,6 +47,7 @@ public class BombermanRenderer {
     getBombermanImage('L', bombermanLeftImg);
     getBombermanImage('R', bombermanRightImg);
 
+    bombermanDeadImg = new Texture("BmanDead.png");
     bombermanImg = bombermanFrontImg[0];    
 	}
 
@@ -101,11 +106,11 @@ public class BombermanRenderer {
     Vector2 pos = bomberman.getPosition();
     batch.begin();
 
-    if(bomberman.isAlive()) {
+    if (bomberman.isAlive()) {
     	renderBombermanByDirection();
-    	GL20 gl = Gdx.gl;
-    	Gdx.gl.glClearColor(1.000f, 0.980f, 0.941f, 1);
 			batch.draw(bombermanImg, pos.x - WorldRenderer.BLOCK_SIZE/2, BombermanGame.HEIGHT - pos.y - WorldRenderer.BLOCK_SIZE/2);
+    } else {
+			batch.draw(bombermanDeadImg, pos.x - WorldRenderer.BLOCK_SIZE/2, BombermanGame.HEIGHT - pos.y - WorldRenderer.BLOCK_SIZE/2);
     }
 
     batch.end();
