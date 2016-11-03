@@ -27,6 +27,7 @@ public class WorldRenderer {
   private MazeRenderer mazeRenderer;
   private BombRenderer bombRenderer;
   private ItemRenderer itemRenderer;
+  private StatusBarRenderer statusBarRenderer;
 
 	public WorldRenderer(BombermanGame bombermanGame, World world) {
 		this.bombermanGame = bombermanGame;
@@ -43,6 +44,7 @@ public class WorldRenderer {
     mazeRenderer = new MazeRenderer(bombermanGame.batch, world.getMaze());
     bombRenderer = new BombRenderer(bombermanGame.batch, world.getBomb());
     itemRenderer = new ItemRenderer(bombermanGame.batch, world.getItem());
+    statusBarRenderer = new StatusBarRenderer(bombermanGame.batch, world);
 	}
 	
 	public void render (float delta) {
@@ -50,11 +52,11 @@ public class WorldRenderer {
     bombRenderer.render();
     itemRenderer.render();
     // creepRenderer.render();
-
     bombermanRenderer.render();
     bombermanRenderer2.render();
     bombermanRenderer3.render();
 	  bombermanRenderer4.render();
+	  statusBarRenderer.render();
 	}
 
 

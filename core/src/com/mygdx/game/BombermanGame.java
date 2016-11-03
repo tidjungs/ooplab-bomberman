@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class BombermanGame extends Game {
-	public static final int HEIGHT = 520;
+	public static final int HEIGHT = 620;
 	public static final int WIDTH = 760;
 
 	public SpriteBatch batch;

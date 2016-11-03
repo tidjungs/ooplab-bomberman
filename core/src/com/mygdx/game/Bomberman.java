@@ -143,6 +143,10 @@ public class Bomberman {
 		return bombArea;
 	}
 
+	public int getBombLimit() {
+		return bombLimit;
+	}
+
 	public void collectItem() {
 
 		int r = getRow();
