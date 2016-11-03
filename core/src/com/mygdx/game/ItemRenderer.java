@@ -36,7 +36,7 @@ public class ItemRenderer {
 	        				batch.draw(pwbImage, x, y);
 	        			} else if (type == item.POWERUP_FRAME) {
 	        				batch.draw(pwfImage, x, y);
-	        			} else if (type == item.POWERUP_SPEED) {
+	        			} else if (type == item.POWERUP_GHOST_WALK) {
 	        				batch.draw(pwsImage, x, y);
 	        			}
 	        		}

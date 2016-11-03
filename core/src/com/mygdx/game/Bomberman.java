@@ -90,11 +90,14 @@ public class Bomberman {
 
 		move(currentDirection);
 
+		// ghost walk //
 		if (ghostWalk) {
 			if (--ghostWalkTime <= 0) {
 				ghostWalk = false;
 			}
 		}
+
+		
 	}
 	
 	public boolean isAtCenter() {
@@ -171,7 +174,7 @@ public class Bomberman {
 			bombLimit++;
 		} else if (type == item.POWERUP_FRAME) {
 			bombArea++;
-		} else if (type == item.POWERUP_SPEED) {
+		} else if (type == item.POWERUP_GHOST_WALK) {
 			ghostWalk = true;
 			ghostWalkTime = GHOST_WALK_LIMIT_TIME;
 		}
