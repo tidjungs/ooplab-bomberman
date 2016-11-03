@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class BombermanRenderer {
 
-	private static final int DELAY_LENGTH = 5;
+	private static final int DELAY_LENGTH = 2;
 	private static final int BOMBERMAN_IMG_PER_POSITION = 8;
 
 	private SpriteBatch batch;
@@ -75,7 +75,7 @@ public class BombermanRenderer {
 
 	private void renderBombermanByDelay(Texture [] texture) {
 		for(int i=0; i<8; i++) {
-			if(movingDelay < DELAY_LENGTH*(i+1)) {
+			if(movingDelay < DELAY_LENGTH*(i)) {
 				bombermanImg = texture[i];
 				break;
 			}

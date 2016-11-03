@@ -1,6 +1,8 @@
 package com.mygdx.game;
 
 public class Bomb {
+	private static final int BOMB_TIME = 150;
+	private static final int BOMB_STRONG_TIME = 120;
 	private static final int FRAME_TIME = 50;
 
 	private int [][] timeBomb;
@@ -58,7 +60,7 @@ public class Bomb {
 	}
 	
 	public void newBomp(int row, int col, int player) {
-			timeBomb[row][col] = 150;
+			timeBomb[row][col] = BOMB_TIME;
 			owner[row][col] = player;
 	}
 	
@@ -72,7 +74,7 @@ public class Bomb {
 	}
 	
 	public boolean canPassBomb(int row, int col) {
-		return timeBomb[row][col] > 120 || timeBomb[row][col] == 0;
+		return timeBomb[row][col] > BOMB_STRONG_TIME || timeBomb[row][col] == 0;
 	}
 	
 	private Bomberman getBomberman(int index) {
@@ -172,7 +174,7 @@ public class Bomb {
 				if (hasFireAt(r, c)) {
 					decreaseFire(r, c);
 				}
-				
+
 			}
 		}
 
