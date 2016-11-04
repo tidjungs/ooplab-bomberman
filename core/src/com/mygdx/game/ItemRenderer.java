@@ -30,7 +30,7 @@ public class ItemRenderer {
 	        		int x = c * WorldRenderer.BLOCK_SIZE + 6;
 	        		int y = BombermanGame.HEIGHT - (r * WorldRenderer.BLOCK_SIZE) - WorldRenderer.BLOCK_SIZE + 6;
 	        		
-	        		if (item.isSpawn(r, c) || item.isNotSpawn(r,c)) {
+	        		if (item.isSpawn(r, c)) {
 	     	        int type = item.getItemType(r, c);
 	        			if (type == item.POWERUP_BOMP) {
 	        				batch.draw(pwbImage, x, y);

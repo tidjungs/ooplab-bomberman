@@ -16,7 +16,7 @@ public class Item {
 
 	private static final int NUMBER_OF_POWERUP_BOMP = 20;
 	private static final int NUMBER_OF_POWERUP_FRAME = 20;
-	private static final int NUMBER_OF_POWERUP_GHOST_WALK = 20;
+	private static final int NUMBER_OF_POWERUP_GHOST_WALK = 4;
 
 
 	public static final int POWERUP_BOMP = 11;
