@@ -92,62 +92,49 @@ public class Bomb {
 		}
 	}
 
+	private boolean isOutOfLength(int row, int col) {
+		return row >= height - 1 || col >= width - 1 || row < 0 || col < 0;
+	}
+
+
+	private void setRowFireTarget(int row, int col, int dir) {
+		for(int i=1; i<=bombArea; i++) {
+			
+			if (maze.hasWallAt(row + dir*i, col)) {
+				break;
+			}
+
+			fire[row + dir*i][col] = FRAME_TIME;
+
+			if (maze.hasBoxAt(row + dir*i, col)) {
+				world.explode(row + dir*i, col);
+				break;
+			}
+		}
+	} 
+
+	private void setColFireTarget(int row, int col, int dir) {
+		for(int i=1; i<=bombArea; i++) {
+			
+			if (maze.hasWallAt(row, col + dir*i)) {
+				break;
+			}
+
+			fire[row][col + dir*i] = FRAME_TIME;
+
+			if (maze.hasBoxAt(row, col + dir*i)) {
+				world.explode(row , col + dir*i);
+				break;
+			}
+		}
+	} 
+
 	private void setFireTarget(int row, int col) {
-		for(int i=row; i>=row-bombArea; i--) {
-			
-			if(maze.hasWallAt(i, col)) {
-				break;
-			}
-
-			fire[i][col] = FRAME_TIME;
-
-			if(maze.hasBoxAt(i, col)) {
-				world.explode(i, col);
-				break;
-			}
-		}
-
-		for(int i=row; i<=row+bombArea; i++) {
-
-			if(maze.hasWallAt(i, col)) {
-				break;
-			}
-
-			fire[i][col] = FRAME_TIME;
-
-			if(maze.hasBoxAt(i, col)) {
-				world.explode(i, col);
-				break;
-			}
-		}
-
-		for(int j=col; j>=col-bombArea; j--) {
-			
-			if(maze.hasWallAt(row, j)) {
-				break;
-			}
-			
-			fire[row][j] = FRAME_TIME;
-		
-			if(maze.hasBoxAt(row, j)) {
-				world.explode(row, j);
-				break;
-			}
-		}
-
-		for(int j=col; j<=col+bombArea; j++) {
-			
-			if(maze.hasWallAt(row, j)) {
-				break;
-			}
-			
-			fire[row][j] = FRAME_TIME;
-
-			if(maze.hasBoxAt(row, j)) {
-				world.explode(row, j);
-				break;
-			}
-		}
+		fire[row][col] = FRAME_TIME;
+		setRowFireTarget(row, col, -1);
+		setRowFireTarget(row, col, +1);
+		setColFireTarget(row ,col, -1);
+		setColFireTarget(row ,col, +1);
 	}
 
 	private void checkExplode(int row, int col) {
