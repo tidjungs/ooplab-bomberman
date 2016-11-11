@@ -45,23 +45,17 @@ public class Maze {
 	
 	private void inintialBox() {
 		Box = new boolean [height][width];
+		// Portal = new boolean [height][width];
+
 		for(int r=0; r < height; r++) {
 			for(int c=0; c < width; c++) {
 				if(MAP[r].charAt(c) == 'X') {
 					Box[r][c] = true;
-				}
+				} 
 			}
 		}
 	}
 
-	// private boolean canBoxSpawn(int r, int c) {
-	// 	return !hasWallAt(r, c) && 
-	// }
-
-	// private boolean bombermanSpawnPoint(int r, int c) {
-	// 	for(int i)
-	// }
-	
 	public int getHeight() {
 		return height;
 	}

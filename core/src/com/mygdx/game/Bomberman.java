@@ -10,7 +10,7 @@ public class Bomberman {
 	public static final int DIRECTION_DOWN = 3;
 	public static final int DIRECTION_LEFT = 4;
 	public static final int DIRECTION_STILL = 0;
-	public static final int GHOST_WALK_LIMIT_TIME = 1000;
+	public static final int GHOST_WALK_LIMIT_TIME = 800;
 	
 	private static final int [][] DIR_OFFSETS = new int [][] {
 		{0, 0},
@@ -37,6 +37,7 @@ public class Bomberman {
 	private int bombPlant = 0;
 
 	private int bombArea = 1;
+	private int portalDelay = 0;
 
 	private int player;
 		
@@ -68,7 +69,7 @@ public class Bomberman {
 	}
 	
 	public void setNextDirection(int dir) {
-        nextDirection = dir;
+    nextDirection = dir;
 	}
 	
 	public void update() {
@@ -99,6 +100,10 @@ public class Bomberman {
 		}
 
 
+	}
+
+	public boolean isAtPortal() {
+		return maze.hasPortalAt(getRow(), getCol());
 	}
 	
 	public boolean isAtCenter() {

@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class BombermanRenderer {
 
-	private static final int DELAY_LENGTH = 2;
+	private static final int DELAY_LENGTH = 4;
 	private static final int BOMBERMAN_IMG_PER_POSITION = 8;
 	// private static final int DEAD_RENDER_DELAY_LENGTH = 500;
 

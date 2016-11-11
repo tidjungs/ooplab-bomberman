@@ -3,7 +3,7 @@ package com.mygdx.game;
 public class Bomb {
 	private static final int BOMB_TIME = 150;
 	private static final int BOMB_STRONG_TIME = 120;
-	private static final int FRAME_TIME = 50;
+	private static final int FRAME_TIME = 40;
 
 	private int [][] timeBomb;
 	private int [][] fire;

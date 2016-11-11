@@ -5,16 +5,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public class StatusBarRenderer {
-    private static final int PLAYER1_POSITION = 50;
-    private static final int PLAYER2_POSITION = 250;
-    private static final int PLAYER3_POSITION = 450;
-    private static final int PLAYER4_POSITION = 650;
+    private static final int PLAYER1_POSITION = 30;
+    private static final int PLAYER2_POSITION = 230;
+    private static final int PLAYER3_POSITION = 430;
+    private static final int PLAYER4_POSITION = 630;
 
-    private static final int NAME_POSITION = BombermanGame.HEIGHT - 540;
-    private static final int STATUS_POSITION = BombermanGame.HEIGHT - 560;
-    private static final int BOMB_POSITION = BombermanGame.HEIGHT - 580;
-    private static final int FLAME_POSITION = BombermanGame.HEIGHT - 600;
-    private static final int GHOSTWLAK_POSITION = BombermanGame.HEIGHT - 620;
+    private static final int BAR_POSITION = 540;
+    private static final int NAME_POSITION = BombermanGame.HEIGHT - BAR_POSITION;
+    private static final int STATUS_POSITION = BombermanGame.HEIGHT - BAR_POSITION - 20;
+    private static final int BOMB_POSITION = BombermanGame.HEIGHT - BAR_POSITION - 40;
+    private static final int FLAME_POSITION = BombermanGame.HEIGHT - BAR_POSITION - 60;
+    private static final int GHOSTWLAK_POSITION = BombermanGame.HEIGHT - BAR_POSITION - 80;
 
     private SpriteBatch batch;
     private BitmapFont font;

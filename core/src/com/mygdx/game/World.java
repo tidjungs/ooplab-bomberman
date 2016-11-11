@@ -15,15 +15,18 @@ public class World {
     
     World(BombermanGame bombermanGame) {
     	this.bombermanGame = bombermanGame;
-    	maze = new Maze();
-    	bomb = new Bomb(maze, this);
+        initWorld();
+        // creep = new Creep(380, 260);
+    }
+
+    public void initWorld() {
+        maze = new Maze();
+        bomb = new Bomb(maze, this);
         item = new Item(maze);
-    	bomberman = new Bomberman(60, 60, maze, bomb, item, 1);
-    	bomberman2 = new Bomberman(700, 460, maze, bomb, item, 2);
+        bomberman = new Bomberman(60, 60, maze, bomb, item, 1);
+        bomberman2 = new Bomberman(700, 460, maze, bomb, item, 2);
         bomberman3 = new Bomberman(60, 460, maze, bomb, item, 3);
         bomberman4 = new Bomberman(700, 60, maze, bomb, item, 4);
-
-        // creep = new Creep(380, 260);
     }
     
     public Bomberman getBomberman() {
@@ -59,6 +62,10 @@ public class World {
     // }
     
     public void update(float delta) {
+        // if(gameOver()) {
+        //     initWorld();
+        // }
+
     	if(bomberman.isAlive()) {
     		bomberman.update();
     	}
@@ -78,6 +85,11 @@ public class World {
         bomb.update();
     }
     
+    // public boolean gameOver() {
+    //     return !bomberman.isAlive();
+    //     // return !bomberman.isAlive() && !bomberman2.isAlive() && !bomberman3.isAlive() && !bomberman4.isAlive();
+    // }
+
     public void explode(int r, int c) {
         if(maze.hasBoxAt(r, c)) {
             item.spawn(r, c);
