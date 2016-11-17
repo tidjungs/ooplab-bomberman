@@ -40,6 +40,7 @@ public class Bomberman {
 	private int portalDelay = 0;
 
 	private int player;
+	private int delay = 0;
 		
 	public Bomberman(int x, int y, Maze maze, Bomb bomb, Item item, int player) {
 		position = new Vector2(x, y);
@@ -78,6 +79,11 @@ public class Bomberman {
 			die();
 		}
 
+		if(isAtPortal()) {
+			warp();
+		}
+
+
 		if(isTouchingItem()) {
 			collectItem();
 		}
@@ -100,9 +106,13 @@ public class Bomberman {
 		}
 
 
+	}	
+
+	private void warp() {
+		position.x = (getCol() + 14) * WorldRenderer.BLOCK_SIZE;
 	}
 
-	public boolean isAtPortal() {
+	private boolean isAtPortal() {
 		return maze.hasPortalAt(getRow(), getCol());
 	}
 	
