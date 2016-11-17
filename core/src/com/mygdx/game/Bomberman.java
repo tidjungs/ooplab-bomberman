@@ -11,7 +11,6 @@ public class Bomberman {
 	public static final int DIRECTION_LEFT = 4;
 	public static final int DIRECTION_STILL = 0;
 	public static final int GHOST_WALK_LIMIT_TIME = 800;
-	public static final int WARP_DELAY_TIME = 60;
 
 	
 	private static final int [][] DIR_OFFSETS = new int [][] {
@@ -39,7 +38,6 @@ public class Bomberman {
 	private int bombPlant = 0;
 
 	private int bombArea = 1;
-	private int warpDelayCount = 0;
 
 	private int player;
 	private int delay = 0;
@@ -85,10 +83,7 @@ public class Bomberman {
 			warp(+15);
 		} else if (isAtSecondPortal()) {
 			warp(-14);
-		} else {
-			warpDelayCount = 0;
 		}
-
 
 		if(isTouchingItem()) {
 			collectItem();
@@ -115,13 +110,7 @@ public class Bomberman {
 	}	
 
 	private void warp(int dir) {
-		if(warpDelayCount == 0) {
 			position.x = (getCol() + dir) * WorldRenderer.BLOCK_SIZE;
-		}
-		
-		if(warpDelayCount++ >= WARP_DELAY_TIME) {
-			warpDelayCount = 0;
-		}
 	}
 
 	private boolean isAtFirstPortal() {
