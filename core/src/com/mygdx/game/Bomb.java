@@ -137,16 +137,20 @@ public class Bomb {
 		setColFireTarget(row ,col, +1);
 	}
 
-	private void checkExplode(int row, int col) {
-		if(timeBomb[row][col] == 0) {
-			
-			Bomberman bomberman = getBomberman(owner[row][col]);
-			bomberman.receivePlantBomp();
-			bombArea = bomberman.getBombArea();
-			owner[row][col] = 0;
-			setFireTarget(row, col);
+	private boolean isTimeBombOver(int row, int col) {
+		return timeBomb[row][col] == 0;
+	}
 
+	private void checkExplode(int row, int col) {
+		if (!isTimeBombOver(row, col)) {
+			return;
 		}
+
+		Bomberman bomberman = getBomberman(owner[row][col]);
+		bomberman.receivePlantBomp();
+		bombArea = bomberman.getBombArea();
+		owner[row][col] = 0;
+		setFireTarget(row, col);
 	}
 
 	public void update() {
