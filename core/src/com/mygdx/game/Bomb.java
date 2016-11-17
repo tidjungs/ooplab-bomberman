@@ -142,15 +142,13 @@ public class Bomb {
 	}
 
 	private void checkExplode(int row, int col) {
-		if (!isTimeBombOver(row, col)) {
-			return;
+		if (isTimeBombOver(row, col)) {
+			Bomberman bomberman = getBomberman(owner[row][col]);
+			bomberman.receivePlantBomp();
+			bombArea = bomberman.getBombArea();
+			owner[row][col] = 0;
+			setFireTarget(row, col);
 		}
-
-		Bomberman bomberman = getBomberman(owner[row][col]);
-		bomberman.receivePlantBomp();
-		bombArea = bomberman.getBombArea();
-		owner[row][col] = 0;
-		setFireTarget(row, col);
 	}
 
 	public void update() {
