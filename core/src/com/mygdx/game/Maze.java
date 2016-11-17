@@ -7,9 +7,9 @@ public class Maze {
 	            "#.#X#X#X#X#X#X#X#.#",
 	            "#.XXXXXXXXXXXXXXX.#",
 	            "#.#X#X#X#X#X#X#X#X#",
-	            "#.XXXXXXXXXXXXXXXX#",
-	            "#.PX#X#X#X#X#X#X.X#",
-	            "#XXXXXXXXXXXXXXXXX#",
+	            "#.XXXXXXXXXXXXXX.X#",
+	            "#.1X#X#X#X#X#X#.2.#",
+	            "#XXXXXXXXXXXXXXX.X#",
 	            "#X#X#X#X#X#X#X#X#X#",
 	            "#.XXXXXXXXXXXXXXX.#",
 	            "#.#X#X#X#X#X#X#X#.#",
@@ -34,6 +34,7 @@ public class Maze {
 	
 	private boolean [][] Box;
 	
+
 	private int height;
 	private int width;
 	
@@ -68,10 +69,14 @@ public class Maze {
 		return MAP[r].charAt(c) == '#';
 	}
 
-	public boolean hasPortalAt(int r, int c) {
-		return MAP[r].charAt(c) == 'P';
+	public boolean hasFirstPortalAt(int r, int c) {
+		return MAP[r].charAt(c) == '1';
 	}
-	
+
+	public boolean hasSecondPortalAt(int r, int c) {
+		return MAP[r].charAt(c) == '2';
+	}
+
 	public boolean hasBoxAt(int r, int c) {
 		return Box[r][c];
 	}

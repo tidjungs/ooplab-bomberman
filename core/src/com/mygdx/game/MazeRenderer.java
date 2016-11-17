@@ -35,7 +35,7 @@ public class MazeRenderer {
                     batch.draw(wallImage, x, y);
         		} else if (maze.hasBoxAt(r, c)) {
                     batch.draw(boxImage, x, y);
-        		} else if (maze.hasPortalAt(r, c)) {
+        		} else if (maze.hasFirstPortalAt(r, c) || maze.hasSecondPortalAt(r, c)) {
                     batch.draw(glassImage, x, y);
                     batch.draw(portalImage, x, y);
                 } else {
