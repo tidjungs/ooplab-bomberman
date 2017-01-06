@@ -3,17 +3,17 @@ package com.mygdx.game;
 public class Maze {
 	private String[] MAP = new String [] {
 	            "###################",
-	            "#...XXXXXXXXXXX...#",
+	            "#..XXXXXXXXXXXXX..#",
 	            "#.#X#X#X#X#X#X#X#.#",
-	            "#.XXXXXXXXXXXXXXX.#",
+	            "#XXXXXXXXXXXXXXXXX#",
 	            "#X#X#X#X#X#X#X#X#X#",
 	            "#X#XXXXXXXXXXXXX#X#",
 	            "#.1##X#X#X#X#X##2.#",
 	            "#X#XXXXXXXXXXXXX#X#",
 	            "#X#X#X#X#X#X#X#X#X#",
-	            "#.XXXXXXXXXXXXXXX.#",
+	            "#XXXXXXXXXXXXXXXXX#",
 	            "#.#X#X#X#X#X#X#X#.#",
-	            "#...XXXXXXXXXXX...#",
+	            "#..XXXXXXXXXXXXX..#",
 	            "###################"    
 	};
 	// private String[] MAP = new String [] {
